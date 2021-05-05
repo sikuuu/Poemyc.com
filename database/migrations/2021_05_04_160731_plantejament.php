@@ -92,7 +92,7 @@ class Plantejament extends Migration
 
         DB::unprepared('
         CREATE TRIGGER `like` AFTER INSERT ON `likes` FOR EACH ROW begin
-        UPDATE articles set likes = likes+1 where articles.id = likes.article_id;
+        UPDATE articles set likes = likes+1 where articles.id = NEW.article_id;
         END');
     }
 

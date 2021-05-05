@@ -5,3 +5,11 @@
 .logo-login{
   width: 15em;
 }
+
+.auth{
+  background-image: url('/imgs/fons_auth.png');
+}
+
+.inputauth {
+  height:35px
+}

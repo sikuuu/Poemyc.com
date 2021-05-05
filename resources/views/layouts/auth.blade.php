@@ -21,7 +21,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<body class="auth">
     <div id="app">
         <main class="py-4">
             @yield('content')

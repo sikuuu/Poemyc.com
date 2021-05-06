@@ -68,15 +68,12 @@
                                 <button type="submit" class="font-weight-bold btn btn-warning">
                                     {{ __('Iniciar sesión') }}
                                 </button>
-                                <a type="button" class="font-weight-bold btn btn-dark">
+                                <a type="button" href="/login/ldap" class="font-weight-bold btn btn-dark">
                                 Google / AD</a>
-                                
-                                
                                 <br>
                                 <br>
                             </div>
                         </div>
-
 
                         <div class="row text-center">
                             <div class="col col-6">

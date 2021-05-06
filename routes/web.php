@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard']);
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 /*
 Route::get('login/google', 'App\Http\Controllers\socialLogin@redirectGoogle');
 Route::get('login/google/callback', 'App\Http\Controllers\socialLogin@CallbackGoogle');

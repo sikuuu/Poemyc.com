@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="font-weight-bold mr-0 pr-0 col-md-4 col-form-label text-md-right">{{ __('E-Mail Address:') }}</label>
+                            <label for="email" class="font-weight-bold mr-0 pr-0 col-md-4 col-form-label text-md-right">{{ __('Correo electrónico:') }}</label>
 
                             <div class="inputauth col-md-6">
                                 <div class="input-group mb-3">
@@ -102,6 +102,14 @@
                                     {{ __('Crear cuenta') }}
                                 </button>
                                 <br>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col col-12">
+                                <a class="font-weight-bold btn btn-link" href="{{ route('login') }}">
+                                    {{ __('Ya tienes una cuenta? Inicia sesión') }}
+                                </a>
                             </div>
                         </div>
                     </form>

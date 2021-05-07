@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'home']);
 
+Route::get('/angular',function(){
+    View::addExtension('html','php');
+    return View::make('index');
+});
 
 Auth::routes();
 

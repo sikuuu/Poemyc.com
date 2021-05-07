@@ -98,12 +98,16 @@
                 <small>{{ __('OPCIONES') }}</small>
             </li>
             <!-- /END Separator -->
-            <a class="bg-dark list-group-item list-group-item-action">
+            <a onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-power-off mt-1 fa-fw mr-3"></span>
                     <span class="menu-collapsed">{{ __('Cerrar sesión') }} <span class="badge badge-pill badge-primary ml-2"></span></span>
                 </div>
             </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
 
             <a href="#" data-toggle="sidebar-colapse" class="list-group-item list-group-item-action d-flex align-items-center">
                 <div class="d-flex w-100 justify-content-start align-items-center">

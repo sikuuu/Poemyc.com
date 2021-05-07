@@ -1,0 +1,46 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6 col">
+      
+
+      <div class="card bradius">
+      <div class="card-body">
+        <form method="POST" action="">
+                <div class="form-group row">
+                    <label for="email" class="font-weight-bold mr-0 pr-0 col-md-4 col-form-label text-md-right">Correo</label>
+
+                    <div class="inputauth col-md-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="border-warning bg-warning input-group-text" id="basic-addon1"><i class="fa fa-at"></i></span>
+                            </div>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" required autocomplete="email" autofocus>
+                        </div>
+
+ 
+                            <span class="invalid-feedback" role="alert">
+                                <strong></strong>
+                            </span>
+                    </div>
+                </div>
+
+                <div class="text-center form-group mb-0">
+                    <div class="">
+                        <button type="submit" class="font-weight-bold btn btn-warning">
+                        </button>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="row text-center">
+                    <div class="col col-12">
+                        <a class="font-weight-bold btn btn-link" href="">
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

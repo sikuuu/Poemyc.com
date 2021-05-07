@@ -38,7 +38,7 @@
     <div class="col">
     @include('layouts.alerts')
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>

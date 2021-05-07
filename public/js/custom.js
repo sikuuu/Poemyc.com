@@ -1,4 +1,16 @@
 $(function () {
+    function resizeIFrameToFitContent() {
+        iFrame = document.getElementById('iframe-ng');
+        var iframes = document.querySelectorAll(".iframe-angular");
+
+        for( var i = 0; i < iframes.length; i++) {
+            iframes[i].height  = iFrame.contentWindow.document.body.scrollWidth;        }
+    }
+
+    angularheight = setInterval(function() {
+        resizeIFrameToFitContent();
+    },100)
+
     $('#body-row .collapse').collapse('hide');
 
     $('#collapse-icon').addClass('fa-angle-double-left');

@@ -9,6 +9,7 @@ $(function () {
 
     angularheight = setInterval(function() {
         resizeIFrameToFitContent();
+        console.log('puta');
     },100)
 
     $('#body-row .collapse').collapse('hide');

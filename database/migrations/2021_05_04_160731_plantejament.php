@@ -36,9 +36,10 @@ class Plantejament extends Migration
 
         Schema::create('articles',function(Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->foreignId('creador_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->integer('likes')->default(0);
-            $table->string('text');
+            $table->longtext('text');
             $table->timestamps();
         });
         echo("Taula articles creada\n");
@@ -72,7 +73,7 @@ class Plantejament extends Migration
         echo("Taula likes creada\n");
 
         
-        Schema::create('cesta',function(Blueprint $table) {
+        Schema::create('cestas',function(Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->timestamps();
@@ -80,9 +81,9 @@ class Plantejament extends Migration
         echo("Taula cesta creada\n");
 
     
-        Schema::create('cesta_line',function(Blueprint $table) {
+        Schema::create('cesta_lines',function(Blueprint $table) {
             $table->id();
-            $table->foreignId('cesta_id')->references('id')->on('cesta')->onDelete('cascade')->change();
+            $table->foreignId('cesta_id')->references('id')->on('cestas')->onDelete('cascade')->change();
             $table->foreignId('plan_id')->references('id')->on('plans')->onDelete('cascade')->change();
             $table->string('quantitat_mesos');
             $table->timestamps();
@@ -90,7 +91,7 @@ class Plantejament extends Migration
         echo("Taula cesta_line creada\n");
 
 
-        Schema::create('comanda',function(Blueprint $table) {
+        Schema::create('comandas',function(Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->timestamps();
@@ -98,9 +99,9 @@ class Plantejament extends Migration
         echo("Taula comanda creada\n");
 
 
-        Schema::create('comanda_line',function(Blueprint $table) {
+        Schema::create('comanda_lines',function(Blueprint $table) {
             $table->id();
-            $table->foreignId('comanda_id')->references('id')->on('comanda')->onDelete('cascade')->change();
+            $table->foreignId('comanda_id')->references('id')->on('comandas')->onDelete('cascade')->change();
             $table->string('plan_nom');
             $table->string('plan_preu');
             $table->string('plan_text');

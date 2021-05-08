@@ -4,7 +4,7 @@
 <div class="p-0 container-fluid iframe-angular">
 
     <div class="row justify-content-center iframe-angular">
-        <iframe src="/angular" id="iframe-ng" class="iframe-angular" frameborder="0" width="100%"></iframe>
+        <iframe src="http://poemyc.com:4200" id="iframe-ng" class="iframe-angular" frameborder="0" height="10000px" width="100%"></iframe>
 
         <div class="col-md-8">
             

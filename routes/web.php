@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'home']);
 
 Route::get('/angular',function(){
-    View::addExtension('html','php');
-    return View::make('index');
+   //dd(Auth::id());
+    return view('angular');
 });
+
 
 Auth::routes();
 
@@ -30,3 +34,10 @@ Route::get('login/google/callback', 'App\Http\Controllers\socialLogin@CallbackGo
 */
 Route::get('login/ldap', 'App\Http\Controllers\socialLogin@redirectldap');
 Route::get('login/ldap/callback', 'App\Http\Controllers\socialLogin@Callbackldap');
+
+//API ROUTES
+
+Route::get('/users',function () {
+    
+    return response()->json(['status'=>'ok','data'=>User::all()], 200);
+});

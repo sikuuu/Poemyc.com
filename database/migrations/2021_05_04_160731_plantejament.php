@@ -15,7 +15,7 @@ class Plantejament extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('creador_id')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->string('preu');
             $table->string('name');
             $table->string('text');
@@ -37,7 +37,7 @@ class Plantejament extends Migration
         Schema::create('articles',function(Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('creador_id')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->integer('likes')->default(0);
             $table->longtext('text');
             $table->timestamps();
@@ -58,7 +58,7 @@ class Plantejament extends Migration
             $table->id();
             $table->string('text');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
-            $table->foreignId('article_id')->references('id')->on('users')->onDelete('cascade')->change();
+            $table->foreignId('article_id')->references('id')->on('articles')->onDelete('cascade')->change();
             $table->timestamps();
         });
         echo("Taula comentaris creada\n");

@@ -8,6 +8,8 @@
 
 .auth{
   background-image: url('/imgs/fons_auth.png');
+
+
 }
 
 .inputauth {
@@ -18,7 +20,14 @@
   width: 10em;
 }
 
+nav{
+  height: 11vh;
+  min-height: 75px;
+}
 
+.h100{
+  height: 100%;
+}
 
 
 
@@ -28,12 +37,19 @@
 #body-row {
   margin-left:0;
   margin-right:0;
+
+  height: 89vh;
+
+
 }
 
 #sidebar-container {
-  min-height: 100vh;
+  min-height: 100%;
+  height: 100%;
   background-color: #1a1d1f;
   padding: 0;
+  max-height: 100%;
+
 }
 
 .sidebar-expanded {
@@ -72,14 +88,8 @@
 
 #sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
 content: " \f0d7";
-font-family: FontAwesome;
-display: inline;
-text-align: right;
-padding-left: 10px;
-}
-
-#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
-content: " \f0da";
+font-family: FontAwesome;  min-height: 100%;
+  max-height: 100%;
 font-family: FontAwesome;
 display: inline;
 text-align: right;

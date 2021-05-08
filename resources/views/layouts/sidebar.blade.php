@@ -115,9 +115,6 @@
                     <span id="collapse-text" class="menu-collapsed">{{ __('Minimizar ') }}</span>
                 </div>
             </a>
-            <!-- Logo -->
-            <li class="list-group-item logo-separator d-flex justify-content-center">
-                <img src="/img/OlivarLogo1.png" alt="">
-            </li>
+            
         </ul><!-- List Group END-->
     </div><!-- sidebar-container END -->

@@ -35,10 +35,10 @@
 <div class="row" id="body-row">
     
     @include('layouts.sidebar')
-    <div class="col">
+    <div class="h100 col">
     @include('layouts.alerts')
 
-        <main class="py-3">
+        <main class="h100">
             @yield('content')
         </main>
     </div>

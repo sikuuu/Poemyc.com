@@ -67,7 +67,50 @@
               <h5 class="m-0"><b>Buscar</b></h5>
           </div>
           <div class="card-body">
-            <input [(ngModel)]="buscador" (keyup)="updatebuscador()" type="text">
+            <div class="row">
+              <div class="col col-12">
+                <input [(ngModel)]="buscador" (keyup)="updatebuscador()" type="text">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-12">
+                <mat-tab-group>
+                  <mat-tab class="mb-2" label="Usuarios">
+                    <div class="container-fluid">
+                      <div class="mb-3"></div>
+                      <div *ngFor="let users of buscadorresults.users" class="row">
+                        <div class="col col-12">
+                          <p><img src="{{users.avatar}}" class="user-img mr-2">{{users.username}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                </mat-tab>
+                <mat-tab label="Articulos"> 
+                  <div class="container-fluid">
+                    <div *ngFor="let article of buscadorresults.articles" class="row">
+                      <div class="col col-12">
+                        {{article.name}}
+                      </div>
+                    </div>
+                  </div>
+                </mat-tab>
+
+                <mat-tab label="Planes"> 
+                  <div class="container-fluid">
+                    <div *ngFor="let plan of buscadorresults.plans" class="row">
+                      <div class="col col-12">
+                        {{plan.name}}
+                      </div>
+                    </div>
+                  </div>
+                </mat-tab>
+            
+                </mat-tab-group>
+              </div>
+            </div>
+            
+            
           </div>
         </div>
       </div>

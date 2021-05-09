@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="text-center col-12">
             <br>
-            <img class="logo-login" src={{env('APP_LOGO') }} alt="">
+            <img class="logo-login" alt="" src="/imgs/MAIN_LOGO.png" >
             <br>
             <br>
             <br>    

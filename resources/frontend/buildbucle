@@ -4,6 +4,6 @@ cd /var/www/html/resources/frontend
 while :
 do 
 ng build; cp dist/frontend/*.js ../../public/; cp dist/frontend/*.css ../../public/; cp dist/frontend/*.ico ../../public/;cp dist/frontend/index.html ../views/angular.blade.php
-sleep 1
+sleep 10
 
 done

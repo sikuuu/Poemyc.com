@@ -15,7 +15,7 @@ export class HttpService {
     return this.httpClient.get('https://poemyc.com/api/articles');
   }
 
-  getBuscador(){
-    return this.httpClient.get('https://poemyc.com/api/buscador');
+  getBuscador(text){
+    return this.httpClient.get('https://poemyc.com/api/buscador/'+text);
   }
 }

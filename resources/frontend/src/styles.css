@@ -9,3 +9,16 @@
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-tab-label-content{
+    font-weight: bold;
+    color: black;
+
+}
+
+.mat-tab-label{
+    
+    border-radius: 5px 5px 0px 0px;
+    margin-right: 1px;
+}
+

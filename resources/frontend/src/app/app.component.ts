@@ -37,8 +37,32 @@ export class AppComponent {
   }*/
 
   updatebuscador(){
-    this.http.getBuscador().subscribe((Response) => {this.buscadorresults = Response;
+    if (this.buscador != ''){
+    this.http.getBuscador(this.buscador).subscribe((Response) => {this.buscadorresults = Response;
       console.log(this.buscadorresults);
-    });  }
+    });  
+    } else {
+      this.buscadorresults = '';
+      console.log(this.buscadorresults);
+    }
+    
+  }
+
+  articleslength(){
+    if (this.buscadorresults != '') {
+      return ' - ('+this.buscadorresults.articles.length+')';
+    }
+  }
+
+  usuarislength(){
+    if (this.buscadorresults != '') {
+      return ' - ('+this.buscadorresults.users.length+')';
+    }
+  }
+  planslength(){
+    if (this.buscadorresults != '') {
+      return ' - ('+this.buscadorresults.plans.length+')';
+    }
+  }
 
 }

@@ -17,6 +17,7 @@ class Plantejament extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->string('preu');
+            $table->string('foto')->default('https://poemyc.com/imgs/default-plan.png');
             $table->string('name');
             $table->string('text');
             $table->timestamps();
@@ -37,6 +38,7 @@ class Plantejament extends Migration
         Schema::create('articles',function(Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('foto')->default('https://poemyc.com/imgs/default-book.png');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->change();
             $table->integer('likes')->default(0);
             $table->longtext('text');

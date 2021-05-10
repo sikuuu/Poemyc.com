@@ -4,8 +4,8 @@
 <div class="p-0 container-fluid iframe-angular h100">
 
     <div class="row justify-content-center iframe-angular h100">
-    <iframe src="http://poemyc.com:4200" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
-        <iframe src="/angular" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
+   <!-- <iframe src="http://poemyc.com:4200" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
+       --> <iframe src="/angular" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
         <div class="col-md-8">
             
         </div>

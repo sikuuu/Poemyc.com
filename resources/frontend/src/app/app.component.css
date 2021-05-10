@@ -1,3 +1,11 @@
 .user-img{
-    max-height: 45px;
+    max-height: 55px;
 }
+
+.middle{
+    margin: auto;
+}
+.name-search{
+    font-size: 14.5px;
+}
+

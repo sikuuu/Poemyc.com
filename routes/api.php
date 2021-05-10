@@ -27,7 +27,8 @@ Route::get('/users',function () {
     return response()->json(['status'=>'ok','data'=>User::all()], 200);
 });
 
-Route::get('/buscador',function () {
-    
-    return response()->json(['status'=>'ok','users'=>User::all(),'articles'=>Article::all(),'plans'=>Plan::all()], 200);
+Route::get('/buscador/{text}',function ($text) {
+    $putamadre = Article::where('name','like','%'.$text.'%')->get();
+    return $putamadre->toJson();
+    //return response()->json(['status'=>'ok','users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>Article::where('name','like','%'.$text.'%'),'plans'=>Plan::where('name','like','%'.$text.'%')->get()], 200);
 });

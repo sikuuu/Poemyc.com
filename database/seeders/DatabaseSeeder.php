@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
 		array(
             'id'=> 1,
             'username' => 'superadmin',
-            'email' => 'vguitart6@gmail.com',
+            'email' => 'admin@gmail.com',
             'password' => '1234',
         ),
         array(

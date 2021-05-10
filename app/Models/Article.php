@@ -8,11 +8,7 @@ use App\Models\User;
 
 class Article extends Model
 {
-    //protected $visible = ['user'];
-
-    protected $hidden = [
-        'text',
-    ];
+    
     use HasFactory;
 
     public function user() {
@@ -22,4 +18,6 @@ class Article extends Model
     public function comentaris() {
         return $this->hasMany(Comentari::class);
     }
+
+    
 }

@@ -28,7 +28,26 @@ Route::get('/users',function () {
 });
 
 Route::get('/buscador/{text}',function ($text) {
-    $putamadre = Article::where('name','like','%'.$text.'%')->get();
-    return $putamadre->toJson();
-    //return response()->json(['status'=>'ok','users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>Article::where('name','like','%'.$text.'%'),'plans'=>Plan::where('name','like','%'.$text.'%')->get()], 200);
+    //$putamadre = Article::where('name','like','%'.$text.'%')->get();
+    //return $putamadre->toJson();
+    $articles = Article::where('name','like','%'.$text.'%')->get();
+
+    
+    $i = 0;
+    foreach($articles as $art) {
+       /* $art['autorname'] = $art->user->name;
+        $art['autorusername'] = */
+        $art->user->username;
+
+
+    }
+
+    return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>$articles,'plans'=>Plan::where('name','like','%'.$text.'%')->get()];
+});
+Route::get('/joder/{text}',function ($text) {
+    $putamadre = Article::all()[0];
+
+    
+    return $putamadre->puta();
+    //return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>Article::where('name','like','%'.$text.'%')->get(),'plans'=>Plan::where('name','like','%'.$text.'%')->get()];
 });

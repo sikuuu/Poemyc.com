@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->string('avatar')->default('imgs/default.png');
+            $table->string('avatar')->default('https://poemyc.com/imgs/default.png');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

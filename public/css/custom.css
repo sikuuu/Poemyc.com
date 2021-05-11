@@ -1,0 +1,115 @@
+.bradius{
+    border-radius:20px
+  }
+
+.logo-login{
+  width: 15em;
+}
+
+.auth{
+  background-image: url('/imgs/fons_auth.png');
+
+
+}
+
+.inputauth {
+  height:35px
+}
+
+.img-navbar{
+  width: 10em;
+}
+
+nav{
+  height: 11vh;
+  min-height: 75px;
+}
+
+.h100{
+  height: 100%;
+}
+
+
+
+
+
+
+#body-row {
+  margin-left:0;
+  margin-right:0;
+
+  height: 89vh;
+
+
+}
+
+#sidebar-container {
+  min-height: 100%;
+  height: 100%;
+  background-color: #1a1d1f;
+  padding: 0;
+  max-height: 100%;
+
+}
+
+.sidebar-expanded {
+  width: 230px;
+}
+
+.sidebar-collapsed {
+  width: 60px;
+}
+
+#sidebar-container .list-group a {
+  height: 50px;
+  color: white;
+}
+
+#sidebar-container .list-group .sidebar-submenu a {
+  height: 45px;
+  padding-left: 30px;
+}
+.sidebar-submenu {
+  font-size: 0.9rem;
+}
+
+.sidebar-separator-title {
+  background-color: #1a1d1f;
+  height: 35px;
+}
+.sidebar-separator {
+  background-color: #1a1d1f;
+  height: 25px;
+}
+.logo-separator {
+  background-color: #1a1d1f;
+  height: 60px;
+}
+
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+content: " \f0d7";
+font-family: FontAwesome;  min-height: 100%;
+  max-height: 100%;
+font-family: FontAwesome;
+display: inline;
+text-align: right;
+padding-left: 10px;
+}
+
+.list-group-item{
+  background-color: #1a1d1f !important;
+}
+
+.list-group a{
+  padding-top: 13px;
+  background-color: #263238 !important;
+}
+
+.list-group a:hover{
+  padding-top: 12px;
+  background-color: #1a1d1f !important;
+}
+
+small{
+  color:white;
+}

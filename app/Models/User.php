@@ -6,6 +6,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Article;
+use App\Models\Plan;
+use App\Models\Comentari;
+use App\Models\Cesta;
+use App\Models\Comanda;
+
 
 class User extends Authenticatable
 {
@@ -41,4 +47,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function articles() {
+        return $this->hasMany(Article::class);
+    }
+
+    public function plans() {
+        return $this->hasMany(Plan::class);
+    }
+
+    public function comentaris() {
+        return $this->hasMany(Comentari::class);
+    }
+
+    public function cesta() {
+        return $this->hasMany(Cesta::class);
+    }
+
+    public function comanda() {
+        return $this->hasMany(Comanda::class);
+    }
+
+    //N to N
+
+
 }

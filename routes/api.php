@@ -31,23 +31,19 @@ Route::get('/buscador/{text}',function ($text) {
     //$putamadre = Article::where('name','like','%'.$text.'%')->get();
     //return $putamadre->toJson();
     $articles = Article::where('name','like','%'.$text.'%')->get();
-
-    
-    $i = 0;
+    $plans = Plan::where('name','like','%'.$text.'%')->get();
+    //dd(Auth::id());
     foreach($articles as $art) {
        /* $art['autorname'] = $art->user->name;
         $art['autorusername'] = */
-        $art->user->username;
-
-
+        $art->creador->id;
     }
 
-    return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>$articles,'plans'=>Plan::where('name','like','%'.$text.'%')->get()];
-});
-Route::get('/joder/{text}',function ($text) {
-    $putamadre = Article::all()[0];
+    foreach($plans as $pla) {
+        /* $art['autorname'] = $art->user->name;
+         $art['autorusername'] = */
+         $pla->creador->id;
+     }
 
-    
-    return $putamadre->puta();
-    //return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>Article::where('name','like','%'.$text.'%')->get(),'plans'=>Plan::where('name','like','%'.$text.'%')->get()];
+    return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>$articles,'plans'=>$plans];
 });

@@ -10,6 +10,6 @@ class Plan extends Model
     use HasFactory;
  
     public function creador() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

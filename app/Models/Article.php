@@ -9,9 +9,13 @@ use App\Models\User;
 class Article extends Model
 {
     
+
+    protected $hidden = [
+        'text',
+    ];
     use HasFactory;
 
-    public function user() {
+    public function creador() {
         return $this->belongsTo(User::class,'user_id','id');
     }
 

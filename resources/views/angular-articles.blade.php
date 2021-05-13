@@ -13,7 +13,8 @@
 
 <link rel="stylesheet" href="styles.css"></head>
 <body style=" height: min-content;background: none;">
-  <app-root></app-root>
+  <home></home>
+  <articles></articles>
 <script src="runtime.js" defer></script><script src="polyfills.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
-<link rel="stylesheet" href="http://poemyc.com:90/css/custom.css">
+<link rel="stylesheet" href="/css/custom.css">
 </html>

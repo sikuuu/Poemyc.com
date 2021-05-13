@@ -9,12 +9,14 @@ import { FormatWidth } from '@angular/common';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ArticleComponent } from './article/article.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,

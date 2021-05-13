@@ -63,7 +63,7 @@
                 <small>{{ __('MI CUENTA') }}</small>
             </li>
             <!-- /END Separator -->
-            <a class="bg-dark list-group-item list-group-item-action">
+            <a href="/articulos" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-scroll mt-1 fa-fw mr-3"></span>
                     <span class="menu-collapsed">{{ __('Mis artículos') }} <span class="badge badge-pill badge-primary ml-2"></span></span>

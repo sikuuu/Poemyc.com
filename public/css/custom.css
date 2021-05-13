@@ -1,5 +1,5 @@
 .bradius{
-    border-radius:20px
+    border-radius:20px  !important;
   }
 
 .logo-login{
@@ -28,6 +28,34 @@ nav{
 .h100{
   height: 100%;
 }
+
+.profile-img{
+  width:160px;
+  max-width: 160px;
+}
+
+.username {
+  font-size:18px;
+}
+
+.w100{
+  width: 100%;
+  max-width: 160px;
+}
+.fumadaperfil {
+  width:100%;
+  max-width:160px;
+  margin: auto !important;
+}
+
+@media (max-width: 395px) {
+  .all-pad {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+  }
+}
+
 
 
 

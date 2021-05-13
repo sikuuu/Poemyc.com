@@ -3,7 +3,7 @@ import { HttpService } from './http.service';
 import { HostListener } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'home',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -27,14 +27,6 @@ export class AppComponent {
       console.log(this.articles);
     });
   }
-
-  /*focused() {
-    this.buscadorfocused = true;
-  }
-
-  nofocused(){
-    this.buscadorfocused = false;
-  }*/
 
   updatebuscador(){
     if (this.buscador != ''){
@@ -65,4 +57,11 @@ export class AppComponent {
     }
   }
 
+  viewprofile(usuari){
+    window.top.location.href = "/user/"+usuari;
+  }
+
+  puta(){
+    console.log(window.top.location.href);
+  }
 }

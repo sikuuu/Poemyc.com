@@ -47,3 +47,7 @@ Route::get('/buscador/{text}',function ($text) {
 
     return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>$articles,'plans'=>$plans];
 });
+
+Route::get('/creadorshome', function (){
+    return response()->json(['users' => User::withCount('articles')->having('articles_count','>',-1)->inRandomOrder()->limit(6)->get()]);
+});

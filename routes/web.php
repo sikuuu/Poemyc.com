@@ -29,14 +29,16 @@ Route::get('/user/{username}','App\Http\Controllers\ProfileController@show');
 
 //Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'home']);
 
-Route::get('/angular-home',function(){
-    return view('angular-home');
+Route::get('/angular',function(){
+    return view('angular');
 });
 
-Route::get('/angular-articles',function(){
-    return view('angular-articles');
-});
 Route::get('login/ldap', 'App\Http\Controllers\socialLogin@redirectldap');
 Route::get('login/ldap/callback', 'App\Http\Controllers\socialLogin@Callbackldap');
 
 //API ROUTES
+
+Route::get('/myarts',function(){
+
+    return ['articles' => Auth::user()->articles()->get()->makeVisible(['text'])];
+});

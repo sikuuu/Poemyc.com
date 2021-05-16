@@ -1,1 +1,35 @@
-<p>article works!</p>
+<div class="container-fluid ">
+    <div class="row p-1">
+        <div class="p-3 col-xs-12 col-sm-12 col-md-11 middle" style="margin: auto;">
+            <h3 class=""><b>Mis articulos</b></h3>
+            <hr>
+            <div class="container-fluid">
+                <div class="card bradius">
+                    <div class="card-body">
+                       <div class="row">
+                            
+                                <div *ngFor="let art of articles.articles" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                    <div class="card">
+                                        <div class="card-header p-0">
+                                            <img class="w-100" src="{{art.foto}}" alt="">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="w-100 text-center">
+                                                <h6><b>{{art.name}}</b></h6>
+                                            </div>
+                                            <div class="text-justify">
+                                                {{ art.text.substring(0,100) }}...
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                
+                            
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

@@ -11,7 +11,7 @@ class ArticleController extends Controller
 {
     public function index(){
         //$user = User::findOrFail(Auth::id());
-        return view('home',['pagina' => 'articles']);
+        return view('home');
         //return view('articles.index',['user' => $user]);
     }
 }

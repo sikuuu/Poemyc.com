@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-12">
             <div class="container-fluid">
-                <div class="card ">
+                <div class="card bradius">
                     <div class="card-body bradius">
                         <div class="mt-2 row">
                             <div class="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
@@ -32,6 +32,13 @@
                 </div>
             </div>
 
+        </div>
+    </div>
+    <div class="row justify-content-center iframe-angular h100">
+   <!-- <iframe src="http://poemyc.com:4200" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
+       --> <iframe src="/angular" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
+        <div class="col-md-8">
+            
         </div>
     </div>
 </div>

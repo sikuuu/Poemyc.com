@@ -7,12 +7,12 @@ export class HttpService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getUsuaris(){
-    return this.httpClient.get('https://poemyc.com/api/users');
+  getUsuarisHome(){
+    return this.httpClient.get('https://poemyc.com/api/creadorshome');
   }
 
   getArticles(){
-    return this.httpClient.get('https://poemyc.com/api/articles');
+    return this.httpClient.get('https://poemyc.com/myarts');
   }
 
   getBuscador(text){

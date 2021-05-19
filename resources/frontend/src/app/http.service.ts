@@ -11,11 +11,31 @@ export class HttpService {
     return this.httpClient.get('https://poemyc.com/api/creadorshome');
   }
 
-  getArticles(){
+  getmyArticles(){
     return this.httpClient.get('https://poemyc.com/myarts');
   }
 
   getBuscador(text){
     return this.httpClient.get('https://poemyc.com/api/buscador/'+text);
+  }
+
+  getArticles(){
+    return this.httpClient.get('https://poemyc.com/arts');
+  }
+
+  getmyPlans(){
+    return this.httpClient.get('https://poemyc.com/myplans');
+  }
+
+  getUserArts(name){
+    return this.httpClient.get('https://poemyc.com/api/userarts/'+name);
+  }
+  
+  getUserPlans(name){
+    return this.httpClient.get('https://poemyc.com/api/userplans/'+name);
+  }
+
+  suscribe(pla){
+    return this.httpClient.get('https://poemyc.com/suscribe/'+pla);
   }
 }

@@ -12,7 +12,7 @@ class ProfileController extends Controller
     public function index(){
         $user = User::findOrFail(Auth::id());
         //dd($user);
-        return view('profile.my',['user' => $user]);
+        return view('profile.my',['user' => $user, 'pagina' => 'perfil']);
     }
 
     public function deletearts(){
@@ -31,6 +31,6 @@ class ProfileController extends Controller
     public function show($username){
         $user = User::where('username',$username)->get();
 
-        return view('profile.user',['user'=>$user[0]]);
+        return view('profile.user',['user'=>$user[0],'pagina' => 'perfil']);
     }
 }

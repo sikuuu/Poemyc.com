@@ -12,14 +12,16 @@ export class ArticleComponent implements OnInit {
   articles:any = '';
 
   constructor(http:HttpService) { 
-    this.getArticles(http);
+    this.getmyArticles(http);
   }
 
   ngOnInit(): void {
   }
 
-  getArticles(http){
-    http.getArticles().subscribe((Response) => {this.articles = Response;
+  getmyArticles(http){
+    http.getmyArticles().subscribe((Response) => {this.articles = Response;
+
+      this.articles = this.articles.articles;
       console.log(this.articles);
     });
   }

@@ -1,7 +1,15 @@
-<div *ngIf="!ruta.includes('articulos')">
+<div *ngIf="!ruta.includes('articles') && !ruta.includes('perfil') && !ruta.includes('plans')">
   <home></home>
 </div>
 
-<div *ngIf="ruta.includes('articulos')">
+<div *ngIf="ruta.includes('articles')">
   <articles></articles>
+</div>
+
+<div *ngIf="ruta.includes('plans')">
+  <plans></plans>
+</div>
+
+<div *ngIf="ruta.includes('perfil')">
+  <perfil></perfil>
 </div>

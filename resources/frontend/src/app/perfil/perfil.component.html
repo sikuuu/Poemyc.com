@@ -1,0 +1,83 @@
+<div class="container-fluid ">
+    <div class="row p-1">
+        <div class="p-3 col-xs-12 col-sm-12 col-md-11 middle" style="margin: auto;">
+            <mat-tab-group>
+                <mat-tab label="Articles">
+                    <div class="container-fluid">
+                        <br>
+                        <div class="card bradius">
+                            <div class="card-body">
+                                <div *ngIf="arts.length == 0">
+                                    <div class="col-12">
+                                        <center>No hay articulos</center>
+
+                                    </div>
+                                </div>
+                               <div *ngIf="(arts.length != 0)" class="row">                                        
+                                        <div *ngFor="let art of arts" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                            <div class="card">
+                                                <div class="card-header p-0">
+                                                    <img class="w-100" src="{{art.foto}}" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="w-100 text-center">
+                                                        <h6><b></b></h6>
+                                                    </div>
+                                                    <div class="text-justify">
+                                                        {{art.name}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>    
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </mat-tab>
+                <mat-tab label="Actividad"></mat-tab>
+                <mat-tab label="Plans">
+                    <div class="container-fluid">
+                        <br>
+                        <div class="card bradius">
+                            <div class="card-body">
+                                <div *ngIf="plans.length == 0" class="row">
+                                    <div class="col-12">
+                                        <center>No hay planes</center>
+                                    </div>
+                                </div>
+                               <div *ngIf="plans.length != 0" class="row">
+                                        <div *ngFor="let pla of plans" class="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                            <div class="card">
+                                                <div class="card-header p-0">
+                                                    <img class="w-100" src="{{pla.foto}}" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="w-100 text-center">
+                                                        <h6><b>{{pla.name}} - {{pla.preu}}€</b></h6>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="text-justify">
+                                                        {{pla.text}}
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <button (click)="suscribe(pla.id)" class="btn btn-success">
+                                                        <i class="fas fa-plus-square"></i> Suscribirse
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        
+                                    
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+              </mat-tab-group>
+        </div>
+    </div>
+</div>  

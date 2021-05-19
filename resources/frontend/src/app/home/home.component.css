@@ -12,3 +12,9 @@
 .maxw{
     max-width: 85% !important;
 }
+
+.creadorlink{
+    cursor: pointer;
+
+}
+

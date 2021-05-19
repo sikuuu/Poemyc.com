@@ -11,6 +11,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArticleComponent } from './article/article.component';
 import { HomeComponent } from './home/home.component';
+import { PlansComponent } from './plans/plans.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 
@@ -18,7 +20,9 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     ArticleComponent,
-    HomeComponent
+    HomeComponent,
+    PlansComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

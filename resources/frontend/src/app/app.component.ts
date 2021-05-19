@@ -12,7 +12,7 @@ export class AppComponent {
   ruta;
 
   constructor(private http:HttpService){
-    this.ruta = window.top.location.pathname;
+    this.ruta = window.location.pathname;
    }
 
 }

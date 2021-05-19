@@ -17,7 +17,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="text-center col col-12">
-                                            <b class="username">{{$user->username}}</b>
+                                            <b id="username-img" class="username">{{$user->username}}</b>
                                         </div>
                                     </div>
                                 </div>
@@ -27,19 +27,26 @@
                                 <p><b>Correo electrónico: </b>{{$user->email}}</p>
                                 <p><b>En Poemyc desde: </b><span class="text-nowrap">{{date("d-m-Y", strtotime(explode(" ",$user->created_at)[0]))}}</p></span>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-    <div class="row justify-content-center iframe-angular h100">
+    <div class="row justify-content-center ">
    <!-- <iframe src="http://poemyc.com:4200" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
-       --> <iframe src="/angular" id="iframe-ng" class="iframe-angular h100" frameborder="0" width="100%"></iframe>
+       --> <iframe src="/angular-{{$pagina}}" id="iframe-ng" class="" frameborder="0" width="100%"></iframe>
         <div class="col-md-8">
             
         </div>
     </div>
 </div>
+
+<script>
+angularframe = setInterval(() => {
+    iframe = document.getElementById('iframe-ng');
+    iframe.style.height = iframe.contentDocument.body.scrollHeight + 20+'px';
+    console.log(iframe.contentDocument.body.scrollHeight);
+}, 500);
+</script>
 @endsection

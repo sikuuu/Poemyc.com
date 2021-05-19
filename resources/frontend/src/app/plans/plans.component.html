@@ -1,29 +1,29 @@
 <div class="container-fluid ">
     <div class="row p-1">
         <div class="p-3 col-xs-12 col-sm-12 col-md-11 middle" style="margin: auto;">
-            <h3 class=""><b>Mis articulos</b></h3>
+            <h3 class=""><b>Mis planes</b></h3>
             <hr>
             <div class="container-fluid">
                 <div class="card bradius">
                     <div class="card-body">
-                        <div *ngIf="articles.length == 0">
+                        <div *ngIf="plans.plans.length == 0" class="row">
                             <div class="col-12">
-                                <center>No hay articulos</center>
+                                <center>No hay planes</center>
                             </div>
                         </div>
-                        <div *ngIf="articles.length != 0" class="row">
-                           
-                                <div *ngFor="let art of articles" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                       <div *ngIf="plans.plans.length != 0" class="row">
+                                <div *ngFor="let pla of plans.plans" class="col col-12 col-sm-4 col-md-3 col-lg-3 col-xl-3">
                                     <div class="card">
                                         <div class="card-header p-0">
-                                            <img class="w-100" src="{{art.foto}}" alt="">
+                                            <img class="w-100" src="{{pla.foto}}" alt="">
                                         </div>
                                         <div class="card-body">
                                             <div class="w-100 text-center">
-                                                <h6><b>{{art.name}}</b></h6>
+                                                <h6><b>{{pla.name}} - {{pla.preu}}€</b></h6>
                                             </div>
+                                            <hr>
                                             <div class="text-justify">
-                                                {{ art.text.substring(0,100) }}...
+                                                {{pla.text}}
                                             </div>
                                         </div>
                                     </div>

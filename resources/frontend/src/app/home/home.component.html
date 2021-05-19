@@ -12,8 +12,8 @@
                   <div class="card-body pt-1 pl-3 pr-3 pb-3">
                     <div class="row pt-1 pl-3 pr-3 pb-0">
                       <div *ngFor="let user of usuaris.users" class="col col-12 col-sm-6 col-md-4 col-lg-12 mt-2 ">
-                        <a href="#">
-                          <div class="row flex-nowrap" (click)="viewprofile(user.username)">
+                        
+                          <div class="row flex-nowrap creadorlink" (click)="viewprofile(user.username)">
                             <div class="m-0 text-center" style="width: fit-content;">
                               <img src="{{user.avatar}}" class="rounded user-img">
                             </div>
@@ -31,7 +31,7 @@
                               </div>
                             </div>
                           </div>
-                        </a>
+                        
                       </div>
                     </div>
                   </div>

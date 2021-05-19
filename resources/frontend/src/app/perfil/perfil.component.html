@@ -10,7 +10,6 @@
                                 <div *ngIf="arts.length == 0">
                                     <div class="col-12">
                                         <center>No hay articulos</center>
-
                                     </div>
                                 </div>
                                <div *ngIf="(arts.length != 0)" class="row">                                        
@@ -21,10 +20,9 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="w-100 text-center">
-                                                        <h6><b></b></h6>
+                                                        <h6><b>{{art.name}}</b></h6>
                                                     </div>
                                                     <div class="text-justify">
-                                                        {{art.name}}
                                                     </div>
                                                 </div>
                                             </div>

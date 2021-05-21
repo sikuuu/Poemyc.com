@@ -38,4 +38,14 @@ export class HttpService {
   suscribe(pla){
     return this.httpClient.get('https://poemyc.com/suscribe/'+pla);
   }
+
+  saveart(art){
+    let headers:any = new Headers();
+    headers.append('Content-Type','application/json');
+    return (this.httpClient.post('https://poemyc.com/saveart', JSON.stringify(art)));
+  }
+
+  getPlansOfArt(id){
+    return this.httpClient.get('https://poemyc.com/getPlansOfArt/'+id);
+  }
 }

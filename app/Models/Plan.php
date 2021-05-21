@@ -17,4 +17,8 @@ class Plan extends Model
         return $this->belongsToMany(User::class, 'users_plans','plan_id','user_id');
     }
 
+    public function articles() {
+        return $this->belongsToMany(Article::class, 'articles_plans','plan_id','article_id');
+    }
+
 }

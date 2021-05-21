@@ -1,0 +1,72 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><b>Editar Article:</b>  {{art.name}}</h4>
+    </div>
+    <div class="modal-body">
+  
+        <form (ngSubmit)="update()" #comform="ngForm">
+            <div class="container">
+                <div class="row justify-content-center">
+    
+                    <div class="col-12 mb-2">
+                        <div class="row text-center justify-content-space-around align-items-center">
+                            <div class="col col-12 col-sm-3">
+                                <p class="mt-2 mb-1"><b>Nombre: </b></p>
+
+                            </div>
+                            <div class="col col-12 col-sm-9">
+                                <input type="text" [(ngModel)]="name" name="nombre">
+
+                            </div>
+
+                        </div>
+                    
+                    </div>
+                    <div class="col-12 mb-3">
+                        <div class="row text-center justify-content-space-around align-items-center">
+                            <div class="col col-12 col-sm-3">
+                                <p class=""><b>Foto: </b></p>
+
+                            </div>
+                            <div class="col col-12 col-sm-9">
+                                <input class="w-100" type="text" [(ngModel)]="foto" name="foto">
+
+                            </div>
+
+                        </div>
+                    
+                    </div>
+                    <div class="col-12">
+                        <div class="row text-center justify-content-space-around align-items-center">
+                            <div class="col col-12">
+                                <p class=""><b>Texto: </b></p>
+
+                            </div>
+                            <div class="col col-12">
+                                <textarea name="text" [(ngModel)]="text" id="" rows="10"></textarea>
+
+                            </div>
+
+                        </div>
+                        
+                    
+                    
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <input class="btn btn-info" type="submit" value="Guardar">
+        
+                        </div>
+                        <div class="col-6">
+                            <input class="btn btn-danger" (click)="modal.close()" type="button" value="Descartar">
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+  
+        </form>
+  
+    </div>
+  

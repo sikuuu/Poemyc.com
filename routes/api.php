@@ -49,7 +49,7 @@ Route::get('/buscador/{text}',function ($text) {
 });
 
 Route::get('/creadorshome', function (){
-    return response()->json(['users' => User::withCount('articles')->having('articles_count','>',0)->inRandomOrder()->limit(6)->get()]);
+    return response()->json(['users' => User::withCount('articles')->having('articles_count','>',-1)->inRandomOrder()->limit(6)->get()]);
 });
 
 Route::get('/userarts/{username}', function ($username){
@@ -59,3 +59,4 @@ Route::get('/userarts/{username}', function ($username){
 Route::get('/userplans/{username}', function ($username){
     return response()->json(['plans' => User::with('plans')->where('username',$username)->get()[0]]);
 });
+

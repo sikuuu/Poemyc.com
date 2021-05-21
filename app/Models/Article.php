@@ -9,7 +9,6 @@ use App\Models\User;
 class Article extends Model
 {
     
-
     protected $hidden = [
         'text',
     ];
@@ -23,5 +22,9 @@ class Article extends Model
         return $this->hasMany(Comentari::class);
     }
 
-    
+    public function plans() {
+        return $this->belongsToMany(Plan::class, 'articles_plans','article_id','plan_id');
+
+    }
+
 }

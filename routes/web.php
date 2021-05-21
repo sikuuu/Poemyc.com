@@ -57,7 +57,6 @@ Route::get('/myplans',function(){
 
 Route::get('/suscribe/{planid}',function($planid){
 
-
     if(sizeof(Auth::user()->suscrit()->wherePivot('plan_id',$planid)->wherePivot('caducitat','>',Carbon::now())->get()) == 0){        
        Auth::user()->suscrit()->attach($planid, ['caducitat' => Carbon::now()->addMonth()]);
         return response()->json('okey');
@@ -67,3 +66,32 @@ Route::get('/suscribe/{planid}',function($planid){
 
 });
 
+/*Route::post('/saveart',function(Request $request){
+    
+    return [$request];
+});
+*/
+
+Route::get('/getPlansOfArt/{artid}',function($artid){
+    //dd(Auth::user()->articles->find($artid)->plans);
+    //dd(Auth::user()->plans);
+
+    $plansart = Auth::user()->articles->find($artid)->plans->makeHidden('pivot');
+
+    $userplans = Auth::user()->plans;
+    $userplans = $userplans->toArray();
+    $plansart=$plansart->toArray();
+    //$userplans = array_diff($userplans->toArray(),$plansart->toArray());
+
+    foreach ($userplans as $puser) {
+        foreach ($plansart as $part){
+            if($puser == $part){
+                array_splice($userplans,array_search($puser,$userplans),1);
+            }
+        }
+    }
+
+    return ['plansart' => $plansart, 'plansnoart' => $userplans];
+    //Auth::user()->articles->find($artid)->plans()->detach(1);
+
+});

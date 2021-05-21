@@ -13,6 +13,8 @@ import { ArticleComponent } from './article/article.component';
 import { HomeComponent } from './home/home.component';
 import { PlansComponent } from './plans/plans.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditartComponent } from './editart/editart.component';
 
 
 
@@ -22,7 +24,8 @@ import { PerfilComponent } from './perfil/perfil.component';
     ArticleComponent,
     HomeComponent,
     PlansComponent,
-    PerfilComponent
+    PerfilComponent,
+    EditartComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     FormsModule,
     MatTabsModule,
     BrowserAnimationsModule,
-
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

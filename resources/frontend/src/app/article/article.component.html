@@ -7,7 +7,8 @@
 
                 </div>
                 <div class="col text-right">
-                    <button class="btn btn-primary">Añadir plan</button>
+                    <button class="btn btn-primary"><fa-icon [icon]="add"></fa-icon>
+                        Nuevo artículo</button>
                 </div>
             </div>
             <hr>
@@ -37,14 +38,34 @@
                                         <div class="card-footer">
                                             <div class="row justify-content-space-around">
                                                 <div class="col col-6 p-1 text-center">
-                                                    <button ngbTooltip="Editar" class="w-75 btn btn-warning">
-                                                        <i class="fas fa-pencil-alt"></i>
+                                                    <button (click)="openModal(art)" ngbTooltip="Editar" class="w-75 btn btn-warning">
+                                                        <fa-icon [icon]="edit"></fa-icon>
                                                     </button>
                                                 </div>
                                                 <div class="col col-6 p-1 text-center">
                                                     <button ngbTooltip="Eliminar" class="w-75 btn btn-danger">
-                                                        <i class="fas fa-trash"></i>
+                                                        <fa-icon [icon]="del"></fa-icon>  
                                                     </button>
+                                                </div>
+                                                <div class="col-12 p-3 text-center">
+                                                    <button [autoClose]="outside" [ngbTooltip]="tipContent" triggers="manual" #t="ngbTooltip" (click)="getPlansOfArt(t,art)" class="w-100 btn btn-info">
+                                                        <fa-icon [icon]="plans" ></fa-icon>
+                                                         Modificar planes
+                                                    </button>
+                                                    <ng-template #tipContent>
+                                                        <button class="btn btn-danger" (click)="t.close()"><b>X</b></button>
+                                                        <br>
+                                                        <div *ngFor="let artplan of plansofart.plansart">
+                                                            <input type="checkbox" checked> {{artplan.name}} - {{artplan.preu}}€
+                                                        </div>
+
+                                                        <div *ngFor="let artplan of plansofart.plansnoart">
+                                                            <input type="checkbox"> {{artplan.name}} - {{artplan.preu}}€
+                                                        </div>
+                                                        
+                                                        
+                                                    </ng-template>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -52,7 +73,7 @@
                                     <br>
                                 </div>
                                 
-                            
+
                        </div>
                     </div>
                 </div>

@@ -42,8 +42,38 @@ export class HttpService {
   saveart(art){
     let headers:any = new Headers();
     headers.append('Content-Type','application/json');
-    return (this.httpClient.post('https://poemyc.com/saveart', JSON.stringify(art)));
+    return (this.httpClient.post('https://poemyc.com/saveart', art,headers));
   }
+
+  createart(art){
+    let headers:any = new Headers();
+    headers.append('Content-Type','application/json');
+    return (this.httpClient.post('https://poemyc.com/createart', art,headers));
+  }
+
+  deleteart(artid){
+
+    return (this.httpClient.get('https://poemyc.com/eliminarart/'+ artid));
+  }
+
+  savepla(pla){
+    let headers:any = new Headers();
+    headers.append('Content-Type','application/json');
+    return (this.httpClient.post('https://poemyc.com/savepla', pla,headers));
+  }
+
+  createpla(pla){
+    let headers:any = new Headers();
+    headers.append('Content-Type','application/json');
+    return (this.httpClient.post('https://poemyc.com/createpla', pla,headers));
+  }
+
+  deletepla(plaid){
+
+    return (this.httpClient.get('https://poemyc.com/eliminarplan/'+ plaid));
+  }
+
+  
 
   getPlansOfArt(id){
     return this.httpClient.get('https://poemyc.com/getPlansOfArt/'+id);

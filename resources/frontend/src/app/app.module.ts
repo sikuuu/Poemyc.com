@@ -15,6 +15,7 @@ import { PlansComponent } from './plans/plans.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditartComponent } from './editart/editart.component';
+import { EditplaComponent } from './editpla/editpla.component';
 
 
 
@@ -25,7 +26,8 @@ import { EditartComponent } from './editart/editart.component';
     HomeComponent,
     PlansComponent,
     PerfilComponent,
-    EditartComponent
+    EditartComponent,
+    EditplaComponent
   ],
   imports: [
     BrowserModule,

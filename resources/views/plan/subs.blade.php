@@ -4,14 +4,21 @@
 <div class="pt-4 container-fluid h100 all-pad" >
     <div class="row">
         <div class="col-12">
+            <h3><b>Gestionar perfil</b></h3>
+            <hr>
             <div class="container-fluid">
             <div class="card bradius">
                 <div class="card-body">
                         <div class="row">
+                            @if (sizeof($plans) < 1)
+                                <div class="fs-16 col-12">
+                                    <center>No estás suscrito a ningún plan</center>
+                                </div>
+                            @endif
                             @foreach ($plans as $pla)
                                 <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                     <div class="card">
-                                        <div class="card-header">
+                                        <div class="card-header p-0">
                                             <img class="w-100" src="{{$pla->foto}}" alt="">
 
                                         </div>
@@ -44,7 +51,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer text-center">
-                                            <button class="btn btn-danger"><i class="fas fa-minus-square"></i> Quitar suscripcion</button>
+                                            <a href="/unsub/{{$pla->id}}" class="btn btn-danger"><i class="fas fa-minus-square"></i> Quitar suscripcion</a>
                                         </div>
                                     </div>
                                     
@@ -52,6 +59,7 @@
                                 </div>
 
                             @endforeach
+                            
                         </div>
                 
             </div>

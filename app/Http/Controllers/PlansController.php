@@ -18,5 +18,10 @@ class PlansController extends Controller
         $plans = Auth::user()->suscrit()->get();
         return view('plan.subs',['plans' => $plans]);
     }
+
+    public function unsub($plaid){
+        Auth::user()->suscrit()->detach($plaid);
+        return $this->subs();
+    }
 }
 

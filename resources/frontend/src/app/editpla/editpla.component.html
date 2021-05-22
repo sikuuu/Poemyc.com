@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title"><b>Editar Article:</b>  {{art.name}}</h4>
+    <h4 class="modal-title" id="modal-basic-title"><b>Editar Plan:</b>  {{pla.name}}</h4>
     </div>
     <div class="modal-body">
   
@@ -21,10 +21,24 @@
                         </div>
                     
                     </div>
+                    <div class="col-12 mb-2">
+                        <div class="row text-center justify-content-space-around align-items-center">
+                            <div class="col col-12 col-sm-3">
+                                <p class="mt-2 mb-1"><b>Precio: </b></p>
+
+                            </div>
+                            <div class="col col-12 col-sm-9">
+                                <input class="w-100" type="text" [(ngModel)]="preu" name="preu">
+
+                            </div>
+
+                        </div>
+                    
+                    </div>
                     <div class="col-12 mb-3">
                         <div class="row text-center justify-content-space-around align-items-center">
                             <div class="col col-12 col-sm-3">
-                                <p class=""><b>Foto: </b></p>
+                                <p class="mt-2 mb-1"><b>Foto: </b></p>
 
                             </div>
                             <div class="col col-12 col-sm-9">
@@ -42,7 +56,7 @@
 
                             </div>
                             <div class="col col-12">
-                                <textarea name="text" [(ngModel)]="text" id="" rows="10"></textarea>
+                                <textarea name="text" [(ngModel)]="text" id="" rows="6"></textarea>
 
                             </div>
 

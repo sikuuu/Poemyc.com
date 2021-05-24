@@ -4,20 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Fotosllarguespeten extends Migration
+class Triggerdislike extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-        Schema::table('articles', function(Blueprint $t) {
-            $t->string('foto', 5000)->nullable()->change();
-        });  
-        Schema::table('plans', function(Blueprint $t) {
-            $t->string('foto', 5000)->nullable()->change();
-        }); 
+    public function up()
+    {
+        DB::unprepared('
+        CREATE TRIGGER `dislike` AFTER delete ON `likes` FOR EACH ROW begin
+        UPDATE articles set likes = likes-1 where articles.id = old.article_id;
+        END');
     }
 
     /**

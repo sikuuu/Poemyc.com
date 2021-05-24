@@ -78,4 +78,13 @@ export class HttpService {
   getPlansOfArt(id){
     return this.httpClient.get('https://poemyc.com/getPlansOfArt/'+id);
   }
+
+  addartplan(plaid,artid){
+    return this.httpClient.get('https://poemyc.com/addartplan/'+plaid+'/'+artid);
+  }
+
+  delartplan(plaid,artid){
+    return this.httpClient.get('https://poemyc.com/delartplan/'+plaid+'/'+artid);
+  }
+  
 }

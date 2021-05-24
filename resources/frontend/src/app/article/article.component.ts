@@ -68,6 +68,22 @@ export class ArticleComponent implements OnInit {
     
   }
 
+  changeartplan(plaid,artid,event){
+
+    if (event.target.checked) {
+      this.http.addartplan(plaid,artid).subscribe((Response) => {
+       
+      });
+    } else {
+      this.http.delartplan(plaid,artid).subscribe((Response) => {
+
+      });
+    }
+   
+    
+
+  }
+
   openModal(art) {
     
     const modalRef = this.modalService.open(EditartComponent,{ size: 'lg' });

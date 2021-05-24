@@ -56,11 +56,11 @@
                                                         <button class="btn btn-danger" (click)="t.close()"><b>X</b></button>
                                                         <br>
                                                         <div *ngFor="let artplan of plansofart[art.id].plansart">
-                                                            <input type="checkbox" checked> {{artplan.name}} - {{artplan.preu}}€
+                                                            <input  type="checkbox" (click)="changeartplan(artplan.id,art.id,$event)" checked> {{artplan.name}} - {{artplan.preu}}€
                                                         </div>
 
                                                         <div *ngFor="let artplan of plansofart[art.id].plansnoart">
-                                                            <input type="checkbox"> {{artplan.name}} - {{artplan.preu}}€
+                                                            <input type="checkbox" (click)="changeartplan(artplan.id,art.id,$event)"> {{artplan.name}} - {{artplan.preu}}€
                                                         </div>
                                                         
                                                         

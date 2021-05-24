@@ -24,6 +24,7 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Links -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/8f497d50ac.js" crossorigin="anonymous"></script>
 
 

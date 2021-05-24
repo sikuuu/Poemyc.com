@@ -27,4 +27,9 @@ class Article extends Model
 
     }
 
+    public function likes()
+    {
+        return $this->belongsToMany(User::class,'likes','article_id','user_id');
+    }
+
 }

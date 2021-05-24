@@ -26,12 +26,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/perfil', 'App\Http\Controllers\ProfileController@index');
     Route::get('/articulos', 'App\Http\Controllers\ArticleController@index');
+    Route::get('/user/{username}/articulo/{artid}', 'App\Http\Controllers\ArticleController@show');
     Route::get('/planes', 'App\Http\Controllers\PlansController@index');
     Route::post('/deletearts', 'App\Http\Controllers\ProfileController@deletearts');
     Route::post('/deleteall', 'App\Http\Controllers\ProfileController@deleteall');
     Route::post('/user/{username}/', 'App\Http\Controllers\ProfileController@deleteall');
     Route::get('/suscripciones', 'App\Http\Controllers\PlansController@subs');
     Route::get('/unsub/{plaid}','App\Http\Controllers\PlansController@unsub');
+    Route::get('like/{artid}','App\Http\Controllers\ArticleController@like');
 
 });
 
@@ -80,22 +82,23 @@ Route::middleware(['auth'])->group(function () {
         //dd(Auth::user()->articles->find($artid)->plans);
         //dd(Auth::user()->plans);
 
-        $plansart = Auth::user()->articles->find($artid)->plans->makeHidden('pivot');
+        $plansarto = Auth::user()->articles->find($artid)->plans->makeHidden('pivot');
 
-        $userplans = Auth::user()->plans;
-        $userplans = $userplans->toArray();
-        $plansart=$plansart->toArray();
+        $userplanso = Auth::user()->plans;
+        $userplans = $userplanso->toArray();
+        $plansart=$plansarto->toArray();
         //$userplans = array_diff($userplans->toArray(),$plansart->toArray());
 
         foreach ($userplans as $puser) {
             foreach ($plansart as $part){
                 if($puser == $part){
-                    array_splice($userplans,array_search($puser,$userplans),1);
+                    unset($userplans[array_search($part,$userplans)]);
+                    
                 }
             }
         }
-
-        return ['plansart' => $plansart, 'plansnoart' => $userplans];
+        $userplans = array_values($userplans);
+    return ['plansart' => $plansart, 'plansnoart' => $userplans/*,'p2' => $plansarto,'u2' => $userplanso*/];
         //Auth::user()->articles->find($artid)->plans()->detach(1);
 
     });
@@ -177,9 +180,50 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/eliminarplan/{id}',function($id){
 
-        
         $pla = Auth::user()->plans->find($id);
         $pla->delete();
         return response()->json(['deleted' => 'yes']);
+    });
+
+    Route::get('/addartplan/{idplan}/{idart}',function($idplan,$idart){
+        if (sizeof(Auth::user()->articles()->find($idart)->plans()->wherePivot('plan_id',$idplan)->get()) == 0){
+            Auth::user()->articles()->find($idart)->plans()->attach(Auth::user()->plans()->find($idplan)->id);//->find($idart)->plans()->attach($idplan);
+            
+            return response()->json(['attached' => 'yes']);
+
+        }
+        
+        return response()->json(['attached' => 'already']);
+    });
+
+    Route::get('/delartplan/{idplan}/{idart}',function($idplan,$idart){
+        if (sizeof(Auth::user()->articles()->find($idart)->plans()->wherePivot('plan_id',$idplan)->get()) != 0){
+            Auth::user()->articles()->find($idart)->plans()->detach(Auth::user()->plans()->find($idplan)->id);//->find($idart)->plans()->attach($idplan);
+            
+            return response()->json(['attached' => 'yes']);
+
+        }
+        
+        return response()->json(['attached' => 'already']);
+    });
+
+    Route::get('/arts', function(){
+
+        $planssucrit = Auth::user()->suscrit()->get();
+        $arts = [];
+        foreach ($planssucrit as $pla){
+            //dd($pla->articles()->orderBy('created_at', 'desc')->get());
+            $artsofpla = $pla->articles()->orderBy('created_at', 'desc')->with('creador','plans')->get()->makeHidden('pivot')->makeVisible('text')->toArray();
+            foreach ($artsofpla as $art) {
+
+                if (!(in_array($art,$arts))) {
+                    $arts[] = $art;
+
+                }
+            }
+        }
+        //dd($planssucrit);
+        return response()->json(['arts' => $arts]);
+
     });
 });

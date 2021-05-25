@@ -29,9 +29,14 @@
             <a href="{{url('/likes')}}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fas fa-heart mt-1 fa-fw mr-3"></span>
-                    <span class="menu-collapsed">{{ __('Favoritos') }}</span>
+                    <span class="menu-collapsed">{{ __('Favoritos') }} <span class="badge badge-light badge-pill ml-2">{{$nums['favs']}}</span></span> 
                 </div>
             </a>
+            <style>
+                .badge{
+                    padding-top:6px
+                }
+            </style>
 
 
             
@@ -61,20 +66,20 @@
             <a href="/articulos" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-scroll mt-1 fa-fw mr-3"></span>
-                    <span class="menu-collapsed">{{ __('Mis artículos') }} <span class="badge badge-pill badge-primary ml-2"></span></span>
+                    <span class="menu-collapsed">{{ __('Mis artículos') }} <span class="badge badge-light badge-pill ml-2">{{$nums['myarts']}}</span></span>
                 </div>
             </a>
             <a href="/planes" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-layer-group mt-1 fa-fw mr-3"></span>
-                    <span class="menu-collapsed">{{ __('Mis planes') }} <span class="badge badge-pill badge-primary ml-2"></span></span>
+                    <span class="menu-collapsed">{{ __('Mis planes') }} <span class="badge badge-light badge-pill ml-2">{{$nums['plans']}}</span></span>
                 </div>
             </a>
 
             <a href="/suscripciones" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="fa fa-gem mt-1 fa-fw mr-3"></span>
-                    <span class="menu-collapsed">{{ __('Mis suscripciones') }} <span class="badge badge-pill badge-primary ml-2"></span></span>
+                    <span class="menu-collapsed">{{ __('Mis suscripciones') }} <span class="badge badge-light badge-pill ml-2">{{$nums['suscrit']}}</span></span>
                 </div>
             </a>
             <a href="/perfil" class="bg-dark list-group-item list-group-item-action">

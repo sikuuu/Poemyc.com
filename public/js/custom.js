@@ -14,10 +14,10 @@ $(function () {
     $('#collapse-icon').addClass('fa-angle-double-left');
 
     $('[data-toggle=sidebar-colapse]').click(function () {
-        SidebarCollapse();
+        SidebarCollapse(true);
     });
 
-    function SidebarCollapse() {
+    function SidebarCollapse(change) {
         $('.menu-collapsed').toggleClass('d-none');
         $('.sidebar-submenu').toggleClass('d-none');
         $('.submenu-icon').toggleClass('d-none');
@@ -31,8 +31,19 @@ $(function () {
         }
 
         $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+
+        if (change){
+            if(localStorage.getItem('sidebar') == 1){
+                localStorage.setItem('sidebar',0)
+            } else {
+                localStorage.setItem('sidebar',1)
+            }
+        }
+        
     }
 
-    SidebarCollapse();
+    if (localStorage.getItem('sidebar') == 1) {
+        SidebarCollapse(false);
+    }
 });
 

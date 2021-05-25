@@ -4,7 +4,7 @@
 <div class="pt-4 container-fluid h100 all-pad" >
     <div class="row">
         <div class="col-12">
-            <h3><b>Gestionar perfil</b></h3>
+            <h3><b>Gestionar suscripciones</b></h3>
             <hr>
             <div class="container-fluid">
             <div class="card bradius">
@@ -19,14 +19,14 @@
                                 <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                     <div class="card">
                                         <div class="card-header p-0">
-                                            <img class="w-100" src="{{$pla->foto}}" alt="">
+                                            <img class="w-100" src="{{$pla->foto}}" onerror="this.src='/imgs/default-plan.png';" alt="">
 
                                         </div>
                                         <div class="card-body p-2">
                                             <div class="w-100 text-center">
                                                 <div class="row m-2" >
                                                     <div class="m-0 text-center" style="width: fit-content;">
-                                                        <img src="{{$pla->creador->avatar}}" class="rounded user-img">
+                                                        <img src="{{$pla->creador->avatar}}" onerror="this.src='/imgs/default.png';" class="rounded user-img">
                                                     </div>
                                                     
                                                     <div class="col" style="margin-top:0.24em;">

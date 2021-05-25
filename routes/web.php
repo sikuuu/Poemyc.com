@@ -21,9 +21,9 @@ use Illuminate\Http\Request;
 */
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-Route::middleware(['auth'])->group(function () {
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::middleware(['auth','nums'])->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/perfil', 'App\Http\Controllers\ProfileController@index');
     Route::get('/articulos', 'App\Http\Controllers\ArticleController@index');
     Route::get('/user/{username}/articulo/{artid}', 'App\Http\Controllers\ArticleController@show');
@@ -35,10 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/unsub/{plaid}','App\Http\Controllers\PlansController@unsub');
     Route::get('/like/{artid}','App\Http\Controllers\ArticleController@like');
     Route::get('/likes','App\Http\Controllers\ArticleController@likes');
+    Route::get('/user/{username}','App\Http\Controllers\ProfileController@show');
+
 
 });
 
-Route::get('/user/{username}','App\Http\Controllers\ProfileController@show');
 
 //Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'home']);
 
@@ -230,5 +231,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/getliked', function(){
         
         return ['arts' => Auth::user()->likes()->orderBy('pivot_created_at','desc')->with('creador','plans')->get()->makeVisible('text')];
+    });
+
+    Route::get('/sidebar/change', function(){
+        $user = Auth::user();
+        if ($user->sidebar == 1){
+           $user->sidebar = 0;
+           $user->save();
+        } else {
+           $user->sidebar = 1;
+           $user->save();
+        }
     });
 });

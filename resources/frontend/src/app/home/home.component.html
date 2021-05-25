@@ -15,7 +15,7 @@
                         
                           <div class="row flex-nowrap creadorlink" (click)="viewprofile(user.username)">
                             <div class="m-0 text-center" style="width: fit-content;">
-                              <img src="{{user.avatar}}" class="rounded user-img">
+                              <img src="{{user.avatar}}" onerror="this.src='/imgs/default.png';" class="rounded user-img">
                             </div>
                             
                             <div class="col pr-0 text-truncate maxw" style="margin-top:0.24em;">
@@ -53,13 +53,13 @@
                       <div *ngFor="let art of articles" class="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4">
                         <div class="card">
                             <div class="card-header p-0">
-                                <img class="w-100" src="{{art.foto}}" alt="">
+                                <img class="w-100" src="{{art.foto}}" onerror="this.src='/imgs/default-book.png';" alt="">
                             </div>
                             <div class="card-body">
                               <center>
                                 <div class="row pr-2 pl-2 flex-nowrap creadorlink" (click)="viewprofile(art.creador.username)">
                                   <div class="m-0 text-center" style="width: fit-content;">
-                                    <img src="{{art.creador.avatar}}" class="rounded user-img">
+                                    <img src="{{art.creador.avatar}}" onerror="this.src='/imgs/default.png';" class="rounded user-img">
                                   </div>
                                   
                                   <div class="col pr-0 text-truncate maxw" style="margin-top:0.24em;">
@@ -141,7 +141,7 @@
                               
                                 <div class="row creadorlink" (click)="viewprofile(users.username)">
                                   <div class="m-0 text-center" style="width: fit-content;">
-                                    <img src="{{users.avatar}}" class="rounded user-img">
+                                    <img src="{{users.avatar}}"  onerror="this.src='/imgs/default.png';" class="rounded user-img">
                                   </div>
                                   
                                   <div class="col" style="margin-top:0.24em;">
@@ -171,7 +171,7 @@
                             <!--<p><b><img src="{{users.avatar}}" class="rounded user-img mr-2">{{users.username}}{{users.name}}</b></p>-->
                             <div class="row">
                               <div class="m-0 text-center" style="width: fit-content;">
-                                <img src="{{article.foto}}" class="rounded user-img">
+                                <img src="{{article.foto}}" onerror="this.src='/imgs/default-book.png';" class="rounded user-img">
                               </div>
                               
                               <div class="col" style="margin-top:0.24em;">
@@ -201,7 +201,7 @@
                             <!--<p><b><img src="{{users.avatar}}" class="rounded user-img mr-2">{{users.username}}{{users.name}}</b></p>-->
                             <div class="row">
                               <div class="m-0 text-center" style="width: fit-content;">
-                                <img src="{{plan.foto}}" class="rounded user-img">
+                                <img src="{{plan.foto}}" onerror="this.src='/imgs/default-plan.png';" class="rounded user-img">
                               </div>
                               
                               <div class="col" style="margin-top:0.24em;">

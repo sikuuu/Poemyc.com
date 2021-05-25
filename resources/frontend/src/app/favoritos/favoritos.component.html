@@ -21,7 +21,7 @@
                                 <div *ngFor="let art of articles" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                     <div class="card">
                                         <div class="card-header p-0">
-                                            <img class="w-100" src="{{art.foto}}" alt="">
+                                            <img class="w-100" src="{{art.foto}}" onerror="this.src='/imgs/default-book.png';" alt="">
                                         </div>
                                         <div class="card-body">
                                             <div class="w-100 text-center">

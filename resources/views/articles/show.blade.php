@@ -25,7 +25,7 @@
                     <div class="card-body">
                        <div class="row">
                             <div class="col col-12">
-                                <img src="{{$art->foto}}" class="w-img mr-3 mb-2 rounded float-left" alt="...">
+                                <img src="{{$art->foto}}" onerror="this.src='/imgs/default-book.png';" class="w-img mr-3 mb-2 rounded float-left" alt="...">
                                 <p class="text-justify text-art">{{$art->text}}</p>
                             </div>
                        </div>

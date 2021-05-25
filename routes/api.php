@@ -30,8 +30,17 @@ Route::get('/users',function () {
 Route::get('/buscador/{text}',function ($text) {
     //$putamadre = Article::where('name','like','%'.$text.'%')->get();
     //return $putamadre->toJson();
-    $articles = Article::where('name','like','%'.$text.'%')->get();
-    $plans = Plan::where('name','like','%'.$text.'%')->get();
+
+    $articles = Article::with('creador')->where('name','like','%'.$text.'%')->orWhereHas('creador',function($q) use ($text){
+        return $q->where('name','like','%'.$text.'%');
+    })->orWhereHas('creador',function($q) use ($text){
+        return $q->where('username','like','%'.$text.'%');
+    })->get();
+    $plans = Plan::where('name','like','%'.$text.'%')->orWhereHas('creador',function($q) use ($text){
+        return $q->where('name','like','%'.$text.'%');
+    })->orWhereHas('creador',function($q) use ($text){
+        return $q->where('username','like','%'.$text.'%');
+    })->get();
     //dd(Auth::id());
     foreach($articles as $art) {
        /* $art['autorname'] = $art->user->name;

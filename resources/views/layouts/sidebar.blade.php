@@ -24,16 +24,11 @@
                 </div>
             </a>-->
 
-            <a class="list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fas fa-clock mt-1 fa-fw mr-3"></span>
-                    <span class="menu-collapsed">{{ __('Más recientes') }}</span>
-                </div>
-            </a>
+            
 
-            <a  class="list-group-item list-group-item-action">
+            <a href="{{url('/likes')}}" class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fas fa-star mt-1 fa-fw mr-3"></span>
+                    <span class="fas fa-heart mt-1 fa-fw mr-3"></span>
                     <span class="menu-collapsed">{{ __('Favoritos') }}</span>
                 </div>
             </a>

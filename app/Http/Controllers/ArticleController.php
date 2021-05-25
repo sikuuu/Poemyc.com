@@ -42,9 +42,10 @@ class ArticleController extends Controller
             $likes = Article::findOrFail($artid)->likes;
 
             return '<i class="far fa-2x fa-heart"></i><b>'.$likes.'</b>';
-
-
         }
+    }
 
+    public function likes(){
+        return view('home', ['pagina' => 'favoritos']);
     }
 }

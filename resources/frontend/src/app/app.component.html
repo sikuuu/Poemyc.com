@@ -1,4 +1,4 @@
-<div *ngIf="!ruta.includes('articles') && !ruta.includes('perfil') && !ruta.includes('plans')">
+<div *ngIf="!ruta.includes('favoritos') && !ruta.includes('articles') && !ruta.includes('perfil') && !ruta.includes('plans')">
   <home></home>
 </div>
 
@@ -12,4 +12,8 @@
 
 <div *ngIf="ruta.includes('perfil')">
   <perfil></perfil>
+</div>
+
+<div *ngIf="ruta.includes('favoritos')">
+  <favoritos></favoritos>
 </div>

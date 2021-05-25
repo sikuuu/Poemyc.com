@@ -53,7 +53,7 @@ Route::get('/creadorshome', function (){
 });
 
 Route::get('/userarts/{username}', function ($username){
-    return response()->json(['articles' => User::with('articles')->where('username',$username)->get()[0]]);
+    return response()->json(['articles' => User::with('articles','articles.plans')->where('username',$username)->get()[0]]);
 });
 
 Route::get('/userplans/{username}', function ($username){

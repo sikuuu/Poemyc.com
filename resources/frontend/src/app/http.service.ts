@@ -86,5 +86,9 @@ export class HttpService {
   delartplan(plaid,artid){
     return this.httpClient.get('https://poemyc.com/delartplan/'+plaid+'/'+artid);
   }
+
+  getLikedArticles(){
+    return this.httpClient.get('https://poemyc.com/getliked');
+  }
   
 }

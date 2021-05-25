@@ -71,13 +71,11 @@ class User extends Authenticatable
     //N to N
 
     public function suscrit() {
-        return $this->belongsToMany(Plan::class, 'users_plans','user_id','plan_id')->withPivot('caducitat');;
+        return $this->belongsToMany(Plan::class, 'users_plans','user_id','plan_id')->withPivot('caducitat');
     }
     
     public function likes()
     {
-        return $this->belongsToMany(Article::class,'likes','user_id','article_id');
+        return $this->belongsToMany(Article::class,'likes','user_id','article_id')->withTimestamps()->withPivot('created_at');
     }
-
-
 }

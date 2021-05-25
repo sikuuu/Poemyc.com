@@ -1,0 +1,62 @@
+<div class="container-fluid ">
+    <div class="row p-1">
+        <div class="p-3 col-xs-12 col-sm-12 col-md-11 middle" style="margin: auto;">
+            <div class="row">
+                <div class="col">
+                    <h3 class=""><b>Artículos Favoritos</b></h3>
+
+                </div>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="card bradius">
+                    <div class="card-body">
+                        <div *ngIf="articles.length == 0">
+                            <div class="col-12">
+                                <center>No tienes artículos favoritos</center>
+                            </div>
+                        </div>
+                        <div *ngIf="articles.length != 0" class="row">
+                           
+                                <div *ngFor="let art of articles" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                    <div class="card">
+                                        <div class="card-header p-0">
+                                            <img class="w-100" src="{{art.foto}}" alt="">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="w-100 text-center">
+                                                <h6><b>{{art.name}}</b></h6>
+                                            </div>
+                                            <div class="text-justify">
+                                                {{ art.text.substring(0,100) }} <span *ngIf="art.text.length > 100">...</span> 
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row justify-content-space-between">
+                                                <!--<div class="col col-6 p-3 text-left">
+                                                    <button  ngbTooltip="Editar" class="w-75 btn btn-warning">
+                                                    </button>
+                                                </div>-->
+                                                
+                                                <div class="col-12 p-3 text-center">
+                                                    <button (click)="veurearticle(art)" class="w-100 btn btn-info">
+                                                        <fa-icon [icon]="veure"></fa-icon>
+
+                                                        Leer
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                
+
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

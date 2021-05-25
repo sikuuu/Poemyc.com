@@ -16,6 +16,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditartComponent } from './editart/editart.component';
 import { EditplaComponent } from './editpla/editpla.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 
 
@@ -27,7 +28,8 @@ import { EditplaComponent } from './editpla/editpla.component';
     PlansComponent,
     PerfilComponent,
     EditartComponent,
-    EditplaComponent
+    EditplaComponent,
+    FavoritosComponent
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/{username}/', 'App\Http\Controllers\ProfileController@deleteall');
     Route::get('/suscripciones', 'App\Http\Controllers\PlansController@subs');
     Route::get('/unsub/{plaid}','App\Http\Controllers\PlansController@unsub');
-    Route::get('like/{artid}','App\Http\Controllers\ArticleController@like');
+    Route::get('/like/{artid}','App\Http\Controllers\ArticleController@like');
+    Route::get('/likes','App\Http\Controllers\ArticleController@likes');
 
 });
 
@@ -53,7 +54,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/myarts',function(){
 
-        return ['articles' => Auth::user()->articles()->get()->makeVisible(['text'])];
+        return ['articles' => Auth::user()->articles()->with('creador')->get()->makeVisible(['text'])];
     });
     Route::get('/myplans',function(){
 
@@ -132,7 +133,6 @@ Route::middleware(['auth'])->group(function () {
 
         return response()->json(['edited' => 'yes']);
 
-        
     });
 
     Route::get('/eliminarart/{id}',function($id){
@@ -225,5 +225,10 @@ Route::middleware(['auth'])->group(function () {
         //dd($planssucrit);
         return response()->json(['arts' => $arts]);
 
+    });
+
+    Route::get('/getliked', function(){
+        
+        return ['arts' => Auth::user()->likes()->orderBy('pivot_created_at','desc')->with('creador','plans')->get()->makeVisible('text')];
     });
 });

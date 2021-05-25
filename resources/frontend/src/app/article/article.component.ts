@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { faPlusSquare,faTrash,faPencilAlt,faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faPlusSquare,faTrash,faPencilAlt,faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { EditartComponent } from '../editart/editart.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,6 +13,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class ArticleComponent implements OnInit {
   add = faPlusSquare;
   del = faTrash;
+  veure = faEye;
+
   edit = faPencilAlt;
   plans = faLayerGroup;
   articles:any = '';
@@ -79,9 +81,6 @@ export class ArticleComponent implements OnInit {
 
       });
     }
-   
-    
-
   }
 
   openModal(art) {
@@ -111,6 +110,11 @@ export class ArticleComponent implements OnInit {
         console.log(this.plansofart);
       t.open()});
       
+    }
+
+    veurearticle(art){
+      //console.log(art);
+      window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
     }
 
 }

@@ -9,15 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
-{
-    public function index(){
-        //$user = User::findOrFail(Auth::id());
+class ArticleController extends Controller {
+
+    public function index() {
         return view('home', ['pagina' => 'articles']);
-        //return view('articles.index',['user' => $user]);
     }
 
-    public function show($username,$artid){
+    public function show($username,$artid) {
         
         $art = User::where('username',$username)->get()[0]->articles()->with('creador','plans')->find($artid);
        
@@ -31,7 +29,7 @@ class ArticleController extends Controller
             return view('articles.show', ['art' => $art, 'heart' => $heart]);
         }
         
-        if (!is_null(Auth::user()->articles->find($art->id))){
+        if (!is_null(Auth::user()->articles->find($art->id))) {
             
             return okey($art);
         }
@@ -40,7 +38,7 @@ class ArticleController extends Controller
 
         $plansuser = Auth::user()->suscrit->makeHidden('pivot')->toArray();
 
-        foreach ($plansart as $plaart){
+        foreach ($plansart as $plaart) {
             if (in_array($plaart,$plansuser)) {
                 return okey($art);
             }
@@ -51,9 +49,9 @@ class ArticleController extends Controller
         return redirect('/'); 
     }
 
-//API#############################################################################################################
+//API####################################################################################################################
 
-    public function myarts(){
+    public function myarts() {
 
         return ['articles' => Auth::user()->articles()->with('creador')->get()->makeVisible(['text'])];
     }
@@ -71,7 +69,7 @@ class ArticleController extends Controller
         return response()->json(['created' => 'yes']);
     }
 
-    public function saveart(Request $request){
+    public function saveart(Request $request) {
 
         $editart = Auth::user()->articles->find($request->id);
         //dd($editart);
@@ -86,7 +84,7 @@ class ArticleController extends Controller
 
     }
 
-    public function eliminarart($id){
+    public function eliminarart($id) {
 
         $art = Auth::user()->articles->find($id);
         $art->delete();
@@ -95,7 +93,7 @@ class ArticleController extends Controller
 
     public function addarttoplan($idplan,$idart){
         if (sizeof(Auth::user()->articles()->find($idart)->plans()->wherePivot('plan_id',$idplan)->get()) == 0){
-            Auth::user()->articles()->find($idart)->plans()->attach(Auth::user()->plans()->find($idplan)->id);//->find($idart)->plans()->attach($idplan);
+            Auth::user()->articles()->find($idart)->plans()->attach(Auth::user()->plans()->find($idplan)->id);
             
             return response()->json(['attached' => 'yes']);
 
@@ -104,9 +102,9 @@ class ArticleController extends Controller
         return response()->json(['attached' => 'already']);
     }
 
-    public function delartfromplan($idplan,$idart){
+    public function delartfromplan($idplan,$idart) {
         if (sizeof(Auth::user()->articles()->find($idart)->plans()->wherePivot('plan_id',$idplan)->get()) != 0){
-            Auth::user()->articles()->find($idart)->plans()->detach(Auth::user()->plans()->find($idplan)->id);//->find($idart)->plans()->attach($idplan);
+            Auth::user()->articles()->find($idart)->plans()->detach(Auth::user()->plans()->find($idplan)->id);
             
             return response()->json(['attached' => 'yes']);
 
@@ -115,23 +113,19 @@ class ArticleController extends Controller
         return response()->json(['attached' => 'already']);
     }
 
-    public function novedadesarts(){
+    public function novedadesarts() {
 
         $planssucrit = Auth::user()->suscrit()->get();
         $arts = [];
-        foreach ($planssucrit as $pla){
+        foreach ($planssucrit as $pla) {
             $artsofpla = $pla->articles()->orderBy('created_at', 'desc')->with('creador','plans')->get()->makeHidden('pivot')->makeVisible('text')->toArray();
             foreach ($artsofpla as $art) {
 
                 if (!(in_array($art,$arts))) {
                     $arts[] = $art;
-
                 }
             }
         }
         return response()->json(['arts' => $arts]);
-
-    }
-    
+    }   
 }
-    

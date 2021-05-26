@@ -36,12 +36,10 @@ class APInotAuthController extends Controller
     }
 
     public function userarts($username){
-        return response()->json(['user' => User::with('articles','articles.plans')->where('username',$username)->get()[0]]);
+        return response()->json(['user' => User::with('articles','articles.plans', 'articles.creador')->where('username',$username)->get()[0]]);
     }
 
     public function userplans($username){
         return response()->json(['user' => User::with('plans')->where('username',$username)->get()[0]]);
     }
-
-
 }

@@ -20,24 +20,35 @@ class ArticleController extends Controller
     public function show($username,$artid){
         
         $art = User::where('username',$username)->get()[0]->articles()->with('creador','plans')->find($artid);
+       
+        function okey($art) {
+            if(sizeof(Auth::user()->likes()->where('article_id',$art->id)->get()) == 0){
+                $heart = 'far';
+            } else {
+                $heart = 'fas'; 
+            }
+
+            return view('articles.show', ['art' => $art, 'heart' => $heart]);
+        }
+        
+        if (!is_null(Auth::user()->articles->find($art->id))){
+            
+            return okey($art);
+        }
+
         $plansart = $art->plans->makeHidden('pivot')->toArray();
 
         $plansuser = Auth::user()->suscrit->makeHidden('pivot')->toArray();
 
         foreach ($plansart as $plaart){
             if (in_array($plaart,$plansuser)) {
-                if(sizeof(Auth::user()->likes()->where('article_id',$artid)->get()) == 0){
-                    $heart = 'far';
-                } else {
-                    $heart = 'fas';
-                }
-
-                return view('articles.show', ['art' => $art, 'heart' => $heart]);
+                return okey($art);
             }
         }
 
-        return redirect('/');
-        
+        notify()->error('No estas suscrito a ningún plan de este artículo','No puedes ver este artículo');
+
+        return redirect('/'); 
     }
 
 //API#############################################################################################################

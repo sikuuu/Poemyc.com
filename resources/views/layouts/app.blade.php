@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        @notifyCss
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -30,6 +31,8 @@
 
     </head>
     <body class="auth">
+        
+
         @include('layouts.navbar')
 
         <!-- Bootstrap row -->
@@ -44,5 +47,8 @@
                 </main>
             </div>
         </div>
+        @include('notify::messages')
+        @notifyJs
+
     </body>
 </html>

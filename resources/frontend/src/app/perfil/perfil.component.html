@@ -49,8 +49,38 @@
                                                     </div>
                                                     <hr>
                                                     <div class="text-justify">
-                                                        <p *ngFor=""></p>
+                                                        <div *ngFor="let plan of art.plans" class="col mt-2 col-12">
+                                                            <!--<p><b><img src="{{users.avatar}}" class="rounded user-img mr-2">{{users.username}}{{users.name}}</b></p>-->
+                                                            <div class="row">
+                                                              <div class="m-0 text-center" style="width: min-content;">
+                                                                <img src="{{plan.foto}}" onerror="this.src='/imgs/default-plan.png';" class="rounded user-img">
+                                                              </div>
+                                                              
+                                                              <div class="col text-truncate flex-nowrap" style="margin-top:0.24em;">
+                                                                <div class="row">
+                                                                  <div class="col-12 text-truncate">
+                                                                    <b>{{plan.name}}</b>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                  <div class="name-search text-truncate col-12 ">
+                                                                    {{plan.text}}
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="col-3 pt-2 text-center justify-content-center align-items-center">
+                                                                <button (click)="suscribe(plan.id)" class="btn btn-success">
+                                                                  <i class="fas fa-plus-square"></i>
+                                                                </button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
                                                     </div>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <button (click)="veurearticle(art)" class="w-100 btn btn-info">
+                                                        <i class="fas fa-eye"></i><b> Leer</b> 
+                                                    </button>
                                                 </div>
                                             </div>
                                             <br>
@@ -61,7 +91,6 @@
                     </div>
                   
                 </mat-tab>
-                <mat-tab label="Actividad"></mat-tab>
                 <mat-tab label="Planes">
                     <div class="container-fluid">
                         <br>
@@ -102,6 +131,7 @@
                         </div>
                     </div>
                 </mat-tab>
+                <mat-tab label="Actividad"></mat-tab>
               </mat-tab-group>
         </div>
     </div>

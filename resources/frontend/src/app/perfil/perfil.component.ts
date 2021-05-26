@@ -61,10 +61,15 @@ export class PerfilComponent implements OnInit {
 
   revesordref(){
     this.revesordre = !this.revesordre;
-   }
+  }
 
-   camporder(value:string){
+  camporder(value:string){
     this.order = value;
    }
+   
+  veurearticle(art){
+    console.log(art);
+    window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
+  }
 
 }

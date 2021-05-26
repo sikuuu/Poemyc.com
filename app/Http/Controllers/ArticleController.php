@@ -20,18 +20,27 @@ class ArticleController extends Controller
     public function show($username,$artid){
         
         $art = User::where('username',$username)->get()[0]->articles()->with('creador','plans')->find($artid);
-        if(sizeof(Auth::user()->likes()->where('article_id',$artid)->get()) == 0){
-            $heart ='far';
-        } else {
-            $heart = 'fas';
+        $plansart = $art->plans->makeHidden('pivot')->toArray();
+
+        $plansuser = Auth::user()->suscrit->makeHidden('pivot')->toArray();
+
+        foreach ($plansart as $plaart){
+            if (in_array($plaart,$plansuser)) {
+                if(sizeof(Auth::user()->likes()->where('article_id',$artid)->get()) == 0){
+                    $heart = 'far';
+                } else {
+                    $heart = 'fas';
+                }
+
+                return view('articles.show', ['art' => $art, 'heart' => $heart]);
+            }
         }
 
-        //dd($art);
-        return view('articles.show', ['art' => $art, 'heart' => $heart]);
-        //return view('articles.index',['user' => $user]);
+        return redirect('/');
+        
     }
 
-//API#######################################################################
+//API#############################################################################################################
 
     public function myarts(){
 

@@ -30,7 +30,7 @@ Route::middleware(['auth','nums'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/perfil', 'App\Http\Controllers\ProfileController@index');
     Route::get('/articulos', 'App\Http\Controllers\ArticleController@index');
-    Route::get('/user/{username}/articulo/{artid}', 'App\Http\Controllers\ArticleController@show');
+    Route::get('/user/{username}/articulo/{artid}','App\Http\Controllers\ArticleController@show');
     Route::get('/planes', 'App\Http\Controllers\PlansController@index');
     Route::post('/deletearts', 'App\Http\Controllers\ProfileController@deletearts');
     Route::post('/deleteall', 'App\Http\Controllers\ProfileController@deleteall');

@@ -199,17 +199,22 @@
                                 <img src="{{article.foto}}" onerror="this.src='/imgs/default-book.png';" class="rounded user-img">
                               </div>
                               
-                              <div class="col" style="margin-top:0.24em;">
+                              <div class="col text-truncate flex-nowrap" style="margin-top:0.24em;">
                                 <div class="row">
-                                  <div class="col-12">
+                                  <div class="text-truncate col-12">
                                     <b>{{article.name}}</b>
                                   </div>
                                 </div>
                                 <div class="row">
-                                  <div class="name-search col-12">
+                                  <div class="text-truncate name-search col-12">
                                     {{article.creador.name}} - {{article.creador.username}}
                                   </div>
                                 </div>
+                              </div>
+                              <div class="col-3 pt-2 text-center justify-content-center align-items-center">
+                                <button (click)="veurearticle(article)" class="btn btn-info">
+                                  <i class="fas fa-eye"></i>
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -222,24 +227,29 @@
                         <div class="mb-1"></div>
   
                         <div class="row">
-                          <div *ngFor="let plan of buscadorresults.plans" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mt-2 ">
+                          <div *ngFor="let plan of buscadorresults.plans" class="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mt-2 ">
                             <!--<p><b><img src="{{users.avatar}}" class="rounded user-img mr-2">{{users.username}}{{users.name}}</b></p>-->
                             <div class="row">
                               <div class="m-0 text-center" style="width: fit-content;">
                                 <img src="{{plan.foto}}" onerror="this.src='/imgs/default-plan.png';" class="rounded user-img">
                               </div>
                               
-                              <div class="col" style="margin-top:0.24em;">
+                              <div class="col text-truncate flex-nowrap" style="margin-top:0.24em;">
                                 <div class="row">
-                                  <div class="col-12">
+                                  <div class="col-12 text-truncate">
                                     <b>{{plan.name}}</b>
                                   </div>
                                 </div>
                                 <div class="row">
-                                  <div class="name-search col-12">
+                                  <div class="name-search text-truncate col-12 ">
                                     {{plan.creador.name}} - {{plan.creador.username}}
                                   </div>
                                 </div>
+                              </div>
+                              <div class="col-3 pt-2 text-center justify-content-center align-items-center">
+                                <button (click)="suscribe(plan.id)" class="btn btn-success">
+                                  <i class="fas fa-plus-square"></i>
+                                </button>
                               </div>
                             </div>
                           </div>

@@ -85,4 +85,17 @@ export class HomeComponent {
     this.order = value;
    }
 
+   suscribe(pla_id){
+    console.log('ok');
+    this.http.suscribe(pla_id).subscribe((Response) => {
+      var sub = Response;
+      console.log(sub);
+      if (sub == "okey") {
+        alert('Te has suscrito correctamente');
+      } else {
+        alert('Ya estas suscrito a este plan');
+      }
+    })
+  }
+
 }

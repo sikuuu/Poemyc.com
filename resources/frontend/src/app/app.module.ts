@@ -6,6 +6,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FormatWidth } from '@angular/common';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -39,6 +41,8 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
     MatTabsModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule,
+    OrderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

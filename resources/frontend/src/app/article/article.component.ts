@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
-import { faEye,faPlusSquare,faTrash,faPencilAlt,faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faPlusSquare,faTrash,faPencilAlt,faLayerGroup,faSearch,faSort } from '@fortawesome/free-solid-svg-icons';
 import { EditartComponent } from '../editart/editart.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { OrderPipe } from 'ngx-order-pipe';
 
 
 @Component({
@@ -14,14 +15,19 @@ export class ArticleComponent implements OnInit {
   add = faPlusSquare;
   del = faTrash;
   veure = faEye;
+  search = faSearch;
+  sort = faSort;
 
+  order  = "created_at";
+  revesordre = true;
+  buscadornoapi;
   edit = faPencilAlt;
   plans = faLayerGroup;
   articles:any = '';
   plansofart = [];
   http;
 
-  constructor(http:HttpService, private modalService: NgbModal) { 
+  constructor(private orderPipe: OrderPipe,http:HttpService, private modalService: NgbModal) { 
     this.getmyArticles(http);
 
     this.http = http;
@@ -104,17 +110,26 @@ export class ArticleComponent implements OnInit {
     });
   }
 
-    getPlansOfArt(t,art){
-      this.http.getPlansOfArt(art.id).subscribe((Response) =>
-        {this.plansofart[art.id] = Response;
-        console.log(this.plansofart);
-      t.open()});
-      
-    }
+  getPlansOfArt(t,art){
+    this.http.getPlansOfArt(art.id).subscribe((Response) =>
+      {this.plansofart[art.id] = Response;
+      console.log(this.plansofart);
+    t.open()});
+    
+  }
 
-    veurearticle(art){
-      //console.log(art);
-      window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
-    }
+  veurearticle(art){
+    //console.log(art);
+    window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
+  }
+
+  revesordref(){
+    this.revesordre = !this.revesordre;
+   }
+
+   camporder(value:string){
+    this.order = value;
+   }
+
 
 }

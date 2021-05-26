@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HttpService } from '../http.service';
 import { HostListener } from '@angular/core';
-import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye,faSearch } from '@fortawesome/free-solid-svg-icons';
+import { OrderPipe } from 'ngx-order-pipe';
 
 
 @Component({
@@ -11,15 +12,20 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent {
   title = 'frontend';
+  order  = "created_at";
+  revesordre = true;
+  buscadornoapi;
   veure = faEye;
+  search = faSearch;
   usuaris:any = '';
   articles:any = '';
   buscador:any = '';
   buscadorresults:any = '';
-  constructor(private http:HttpService){
+  constructor(private orderPipe: OrderPipe,private http:HttpService){
     this.getUsuarisHome();
     this.getArticles();
   }
+
   getUsuarisHome(){
     this.http.getUsuarisHome().subscribe((Response) => {this.usuaris = Response;
       console.log(this.usuaris);
@@ -70,5 +76,13 @@ export class HomeComponent {
     console.log(art);
     window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
   }
+
+  revesordref(){
+    this.revesordre = !this.revesordre;
+   }
+
+   camporder(value:string){
+    this.order = value;
+   }
 
 }

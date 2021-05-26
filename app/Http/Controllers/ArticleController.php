@@ -31,21 +31,87 @@ class ArticleController extends Controller
         //return view('articles.index',['user' => $user]);
     }
 
-    public function like($artid){
-        if(sizeof(Auth::user()->likes()->where('article_id',$artid)->get()) == 0){
-            Auth::user()->likes()->attach($artid);
-            $likes = Article::findOrFail($artid)->likes;
+//API#######################################################################
 
-            return '<i class="fas fa-2x fa-heart"></i><b>'.$likes.'</b>';
-        } else {
-            Auth::user()->likes()->detach($artid);
-            $likes = Article::findOrFail($artid)->likes;
+    public function myarts(){
 
-            return '<i class="far fa-2x fa-heart"></i><b>'.$likes.'</b>';
+        return ['articles' => Auth::user()->articles()->with('creador')->get()->makeVisible(['text'])];
+    }
+
+    public function createart(Request $request){
+        $newart = new Article;
+        $newart->user_id = Auth::id();
+        $newart->name = $request->name;
+        if(!($request->foto == "")){
+            $newart->foto = $request->foto;
         }
+        $newart->text = $request->text;
+        $newart->save();
+
+        return response()->json(['created' => 'yes']);
     }
 
-    public function likes(){
-        return view('home', ['pagina' => 'favoritos']);
+    public function saveart(Request $request){
+
+        $editart = Auth::user()->articles->find($request->id);
+        //dd($editart);
+        $editart->name = $request->name;
+        if(!($request->foto == "")){
+            $editart->foto = $request->foto;
+        }
+        $editart->text = $request->text;
+        $editart->save();
+
+        return response()->json(['edited' => 'yes']);
+
     }
+
+    public function eliminarart($id){
+
+        $art = Auth::user()->articles->find($id);
+        $art->delete();
+        return response()->json(['deleted' => 'yes']);
+    }
+
+    public function addarttoplan($idplan,$idart){
+        if (sizeof(Auth::user()->articles()->find($idart)->plans()->wherePivot('plan_id',$idplan)->get()) == 0){
+            Auth::user()->articles()->find($idart)->plans()->attach(Auth::user()->plans()->find($idplan)->id);//->find($idart)->plans()->attach($idplan);
+            
+            return response()->json(['attached' => 'yes']);
+
+        }
+        
+        return response()->json(['attached' => 'already']);
+    }
+
+    public function delartfromplan($idplan,$idart){
+        if (sizeof(Auth::user()->articles()->find($idart)->plans()->wherePivot('plan_id',$idplan)->get()) != 0){
+            Auth::user()->articles()->find($idart)->plans()->detach(Auth::user()->plans()->find($idplan)->id);//->find($idart)->plans()->attach($idplan);
+            
+            return response()->json(['attached' => 'yes']);
+
+        }
+        
+        return response()->json(['attached' => 'already']);
+    }
+
+    public function novedadesarts(){
+
+        $planssucrit = Auth::user()->suscrit()->get();
+        $arts = [];
+        foreach ($planssucrit as $pla){
+            $artsofpla = $pla->articles()->orderBy('created_at', 'desc')->with('creador','plans')->get()->makeHidden('pivot')->makeVisible('text')->toArray();
+            foreach ($artsofpla as $art) {
+
+                if (!(in_array($art,$arts))) {
+                    $arts[] = $art;
+
+                }
+            }
+        }
+        return response()->json(['arts' => $arts]);
+
+    }
+    
 }
+    

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'perfil',
@@ -7,7 +8,9 @@ import { HttpService } from '../http.service';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-
+  order  = "created_at";
+  revesordre = true;
+  buscadornoapi;
   arts:any = {
     length: 0
   };
@@ -17,7 +20,7 @@ export class PerfilComponent implements OnInit {
 
   http;
 
-  constructor(http:HttpService) {
+  constructor(private orderPipe: OrderPipe,http:HttpService) {
     var username = parent.document.getElementById('username-img').textContent;
     this.getUserArts(http,username);
     this.getUserPlans(http,username);
@@ -29,14 +32,14 @@ export class PerfilComponent implements OnInit {
 
   getUserArts(http,username){
     http.getUserArts(username).subscribe((Response) => {this.arts = Response;
-      this.arts = this.arts.articles.articles;
+      this.arts = this.arts.user.articles;
       console.log(this.arts);
     });  
   }
   
   getUserPlans(http,username){
     http.getUserPlans(username).subscribe((Response) => {this.plans = Response;
-      this.plans = this.plans.plans.plans;
+      this.plans = this.plans.user.plans;
 
       console.log(this.plans);
 
@@ -55,5 +58,13 @@ export class PerfilComponent implements OnInit {
       }
     })
   }
+
+  revesordref(){
+    this.revesordre = !this.revesordre;
+   }
+
+   camporder(value:string){
+    this.order = value;
+   }
 
 }

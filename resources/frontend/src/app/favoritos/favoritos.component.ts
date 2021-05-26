@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'favoritos',
@@ -9,10 +10,13 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 })
 export class FavoritosComponent implements OnInit {
   veure = faEye;
+  order  = "created_at";
+  revesordre = true;
+  buscadornoapi;
   articles:any = '';
   http;
 
-  constructor(http: HttpService) { 
+  constructor(private orderPipe: OrderPipe,http: HttpService) { 
     this.getLikedArticles(http);
     this.http = http;
   }
@@ -32,4 +36,12 @@ export class FavoritosComponent implements OnInit {
     //console.log(art);
     window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
   }
+
+  revesordref(){
+    this.revesordre = !this.revesordre;
+   }
+
+   camporder(value:string){
+    this.order = value;
+   }
 }

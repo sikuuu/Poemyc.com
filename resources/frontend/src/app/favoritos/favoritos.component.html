@@ -11,6 +11,31 @@
             <div class="container-fluid">
                 <div class="card bradius">
                     <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-2x fa-search"></i></span>
+                                        </div>
+                                        <input style="height: 46px;" class="form-control mr-4 me-2" type="search" [(ngModel)]="buscadornoapi" placeholder="Buscar" aria-label="Search">
+                                    </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="input-group mb-3">
+                                        <select #select style="height: 46px;" (change)="camporder(select.value)" class="ml-4 form-control"  aria-label="Default select example" [(ngModel)]="order">
+                                        <option value="name">Nom</option>
+                                        <option selected value="created_at">Antiguitat</option>
+                                        <option value="likes">Likes</option>
+                                        <option value="user_id">Creador</option>
+                                        </select>
+                                        <div class="input-group-append" >
+                                        <button (click)="revesordref()" class="btn btn-info input-group-text" id="basic-addon2"><i class="fas fa-2x fa-sort"></i></button>
+                                        </div>
+                                    </div>
+                                    </div>
+                            
+                                </div>
                         <div *ngIf="articles.length == 0">
                             <div class="col-12">
                                 <center>No tienes artículos favoritos</center>
@@ -18,7 +43,7 @@
                         </div>
                         <div *ngIf="articles.length != 0" class="row">
                            
-                                <div *ngFor="let art of articles" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                <div *ngFor="let art of articles | filter:buscadornoapi | orderBy:order:revesordre:true; index as i " class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
                                     <div class="card">
                                         <div class="card-header p-0">
                                             <img class="w-100" src="{{art.foto}}" onerror="this.src='/imgs/default-book.png';" alt="">

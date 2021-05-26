@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use App\Models\Plan;
-use App\Models\Article;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,55 +14,9 @@ use App\Models\Article;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    dd(Auth::id());
-    return $request->user();
-});
-
-Route::get('/users',function () {
-    
-    return response()->json(['status'=>'ok','data'=>User::all()], 200);
-});
-
-Route::get('/buscador/{text}',function ($text) {
-    //$putamadre = Article::where('name','like','%'.$text.'%')->get();
-    //return $putamadre->toJson();
-
-    $articles = Article::with('creador')->where('name','like','%'.$text.'%')->orWhereHas('creador',function($q) use ($text){
-        return $q->where('name','like','%'.$text.'%');
-    })->orWhereHas('creador',function($q) use ($text){
-        return $q->where('username','like','%'.$text.'%');
-    })->get();
-    $plans = Plan::where('name','like','%'.$text.'%')->orWhereHas('creador',function($q) use ($text){
-        return $q->where('name','like','%'.$text.'%');
-    })->orWhereHas('creador',function($q) use ($text){
-        return $q->where('username','like','%'.$text.'%');
-    })->get();
-    //dd(Auth::id());
-    foreach($articles as $art) {
-       /* $art['autorname'] = $art->user->name;
-        $art['autorusername'] = */
-        $art->creador->id;
-    }
-
-    foreach($plans as $pla) {
-        /* $art['autorname'] = $art->user->name;
-         $art['autorusername'] = */
-         $pla->creador->id;
-     }
-
-    return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>$articles,'plans'=>$plans];
-});
-
-Route::get('/creadorshome', function (){
-    return response()->json(['users' => User::withCount('articles')->having('articles_count','>',0)->inRandomOrder()->limit(6)->get()]);
-});
-
-Route::get('/userarts/{username}', function ($username){
-    return response()->json(['articles' => User::with('articles','articles.plans')->where('username',$username)->get()[0]]);
-});
-
-Route::get('/userplans/{username}', function ($username){
-    return response()->json(['plans' => User::with('plans')->where('username',$username)->get()[0]]);
-});
+Route::get('/users','App\Http\Controllers\APInotAuthController@llistausers');
+Route::get('/buscador/{text}','App\Http\Controllers\APInotAuthController@buscador');
+Route::get('/creadorshome', 'App\Http\Controllers\APInotAuthController@creadorsportada');
+Route::get('/userarts/{username}', 'App\Http\Controllers\APInotAuthController@userarts');
+Route::get('/userplans/{username}', 'App\Http\Controllers\APInotAuthController@userplans');
 

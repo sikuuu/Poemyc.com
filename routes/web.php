@@ -40,6 +40,8 @@ Route::middleware(['auth','nums'])->group(function () {
     Route::get('/like/{artid}','App\Http\Controllers\LikeController@like');
     Route::get('/likes','App\Http\Controllers\LikeController@likes');
     Route::get('/user/{username}','App\Http\Controllers\ProfileController@show');
+    Route::post('/desarcomentari','App\Http\Controllers\ArticleController@desarcomentari');
+
 });
 
 //API ROUTES (ANGULAR) ##################################################################################################################

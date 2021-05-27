@@ -48,6 +48,6 @@ class APInotAuthController extends Controller
     }
 
     public function totaactivitat(){
-        return response()->json(['likes' => Activitat_like::with('user','creador','article')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->get(),'plan' => Activitat_plan::with('user','article','plan')->get()]);
+        return response()->json(['likes' => Activitat_like::with('user','creador','article')->orderBy('time','desc')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->orderBy('time','desc')->get(),'plan' => Activitat_plan::with('user','article','plan')->orderBy('time','desc')->get()]);
     }
 }

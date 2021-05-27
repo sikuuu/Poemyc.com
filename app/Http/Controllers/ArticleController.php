@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Comentari;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +18,8 @@ class ArticleController extends Controller {
 
     public function show($username,$artid) {
         
-        $art = User::where('username',$username)->get()[0]->articles()->with('creador','plans')->find($artid);
-       
+        $art = User::where('username',$username)->get()[0]->articles()->with('creador','plans','comentaris')->find($artid);
+        
         function okey($art) {
             if(sizeof(Auth::user()->likes()->where('article_id',$art->id)->get()) == 0){
                 $heart = 'far';
@@ -47,6 +48,16 @@ class ArticleController extends Controller {
         notify()->error('No estas suscrito a ningún plan de este artículo','No puedes ver este artículo');
 
         return redirect('/'); 
+    }
+
+    public function desarcomentari(Request $request) {
+        $newcom = new Comentari;
+        $newcom->user_id = Auth::id();
+        $newcom->article_id = $request['art_id'];
+        $newcom->text = $request['comentari'];
+        $newcom->save();
+
+        return redirect('/user/'.$request['user'].'/articulo/'.$request['art_id']);
     }
 
 //API####################################################################################################################

@@ -48,6 +48,10 @@ nav{
   margin: auto !important;
 }
 
+.userlink{
+  cursor: pointer;
+}
+
 @media (max-width: 395px) {
   .all-pad {
     padding-left: 0px !important;

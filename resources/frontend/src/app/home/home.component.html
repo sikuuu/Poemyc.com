@@ -270,19 +270,48 @@
                   <div class="col col-12">
                     <mat-tab-group>
                       <mat-tab label="Likes">
-                        <br>
-                        <p *ngFor="let like of activitat.likes">
-                          El usuario {{like.user.username}} ha <span *ngIf="like.text == 'like'">dado</span> <span *ngIf="like.text == 'dislike'">quitado su</span> like al artículo {{like.article.name}} del usuario {{like.creador.username}} ({{like.time}})
-                        </p>
+                        <br> 
+                        <b>
+                          <p *ngFor="let like of activitat.likes">
+                           
+                              <span class="text-info" *ngIf="like.text == 'like'">
+                                El usuario <u>{{like.user.username}}</u> ha dado like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u> ({{data(like.time)}})
+                              </span> 
+                              
+                              <span class="text-danger" *ngIf="like.text == 'dislike'">
+                                El usuario <u>{{like.user.username}}</u> ha quitado su like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u> ({{data(like.time)}})
+                              </span>
+                          </p>
+                        </b> 
                       </mat-tab>
                       <mat-tab label="Suscripciones">
                         <br>
-                        <p *ngFor="let sub of activitat.subs">
-                          El usuario {{sub.user.username}} <span *ngIf="sub.text == 'suscrito'"> se ha suscrito </span> <span *ngIf="sub.text == 'borrado'"> ha cancelado su suscripcion </span> al plan "{{sub.plan.name}}" - {{sub.plan.preu}}€ del usuario {{sub.creador_del_plan.username}} ({{sub.time}})
-                        </p>
+                        <b>
+                          <p *ngFor="let sub of activitat.subs">
+                            <span class="text-info" *ngIf="sub.text == 'suscrito'"> 
+                              El usuario <u>{{sub.user.username}}</u> se ha suscrito al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u> ({{data(sub.time)}})
+                            </span> 
+                            <span class="text-danger" *ngIf="sub.text == 'borrado'">
+                              El usuario <u>{{sub.user.username}}</u> ha cancelado su suscripcion al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u> ({{data(sub.time)}}) 
+                            </span> 
+                          </p>
+                        </b>
                       </mat-tab>
                       <mat-tab label="Articulos y Planes">
-
+                        <br>
+                        <b>
+                          <p *ngFor="let plan of activitat.plan">
+                            <span class="text-info" *ngIf="plan.text == 'añadido'"> 
+                              El usuario <u>{{plan.user.username}}</u> ha añadido su artículo <u>"{{plan.article.name}}"</u> al plan <u>"{{plan.plan.name}}" de {{plan.plan.preu}}€</u>   ({{data(plan.time)}})
+                            </span> 
+                            <span class="text-danger" *ngIf="plan.text == 'quitado'">
+                              El usuario <u>{{plan.user.username}}</u> ha retirado su artículo <u>"{{plan.article.name}}"</u> del plan <u>"{{plan.plan.name}}" de {{plan.plan.preu}}€</u>   ({{data(plan.time)}})
+                            </span> 
+                          </p>
+                        </b>
+                      </mat-tab>
+                      <mat-tab label="Comentarios">
+                          
                       </mat-tab>
                     </mat-tab-group>
                   </div>

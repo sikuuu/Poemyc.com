@@ -19,4 +19,4 @@ Route::get('/buscador/{text}','App\Http\Controllers\APInotAuthController@buscado
 Route::get('/creadorshome', 'App\Http\Controllers\APInotAuthController@creadorsportada');
 Route::get('/userarts/{username}', 'App\Http\Controllers\APInotAuthController@userarts');
 Route::get('/userplans/{username}', 'App\Http\Controllers\APInotAuthController@userplans');
-
+Route::get('/totaactivitat','App\Http\Controllers\APInotAuthController@totaactivitat');

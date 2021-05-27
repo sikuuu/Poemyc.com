@@ -21,9 +21,12 @@ export class HomeComponent {
   articles:any = '';
   buscador:any = '';
   buscadorresults:any = '';
+  activitat;
+
   constructor(private orderPipe: OrderPipe,private http:HttpService){
     this.getUsuarisHome();
     this.getArticles();
+    this.getActivitat();
   }
 
   getUsuarisHome(){
@@ -36,6 +39,13 @@ export class HomeComponent {
     this.http.getArticles().subscribe((Response) => {this.articles = Response;
       this.articles = this.articles.arts;
       console.log(this.articles);
+    });
+  }
+
+  getActivitat(){
+    this.http.getActivitat().subscribe((Response) => {this.activitat = Response;
+      //this.activitat = this.activitat;
+      console.log(this.activitat);
     });
   }
 

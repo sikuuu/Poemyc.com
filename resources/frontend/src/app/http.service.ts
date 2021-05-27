@@ -90,5 +90,9 @@ export class HttpService {
   getLikedArticles(){
     return this.httpClient.get('https://poemyc.com/getliked');
   }
+
+  getActivitat(){
+    return this.httpClient.get('https://poemyc.com/api/totaactivitat');
+  }
   
 }

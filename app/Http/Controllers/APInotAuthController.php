@@ -7,6 +7,10 @@ use App\Models\User;
 use App\Models\Plan;
 use App\Models\Article;
 
+use App\Models\Activitat_like;
+use App\Models\Activitat_plan;
+use App\Models\Activitat_sub;
+
 class APInotAuthController extends Controller
 {
     public function buscador($text) {
@@ -41,5 +45,9 @@ class APInotAuthController extends Controller
 
     public function userplans($username){
         return response()->json(['user' => User::with('plans')->where('username',$username)->get()[0]]);
+    }
+
+    public function totaactivitat(){
+        return response()->json(['likes' => Activitat_like::with('user','creador','article')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->get(),'plan' => Activitat_plan::with('user','article','plan')->get()]);
     }
 }

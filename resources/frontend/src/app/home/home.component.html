@@ -260,7 +260,36 @@
               </div>
             </div>
           </mat-tab>
-          <mat-tab label="Actividad"></mat-tab>
+          <mat-tab label="Actividad">
+            <div class="card mt-3 bradius">
+              <div class="card-header text-center">
+                  <h5 class="m-0"><b>Actividad</b></h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col col-12">
+                    <mat-tab-group>
+                      <mat-tab label="Likes">
+                        <br>
+                        <p *ngFor="let like of activitat.likes">
+                          El usuario {{like.user.username}} ha <span *ngIf="like.text == 'like'">dado</span> <span *ngIf="like.text == 'dislike'">quitado su</span> like al artículo {{like.article.name}} del usuario {{like.creador.username}} ({{like.time}})
+                        </p>
+                      </mat-tab>
+                      <mat-tab label="Suscripciones">
+                        <br>
+                        <p *ngFor="let sub of activitat.subs">
+                          El usuario {{sub.user.username}} <span *ngIf="sub.text == 'suscrito'"> se ha suscrito </span> <span *ngIf="sub.text == 'borrado'"> ha cancelado su suscripcion </span> al plan "{{sub.plan.name}}" - {{sub.plan.preu}}€ del usuario {{sub.creador_del_plan.username}} ({{sub.time}})
+                        </p>
+                      </mat-tab>
+                      <mat-tab label="Articulos y Planes">
+
+                      </mat-tab>
+                    </mat-tab-group>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
         </mat-tab-group>
       </div>
     </div>

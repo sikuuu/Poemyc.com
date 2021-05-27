@@ -14,6 +14,6 @@
 <link rel="stylesheet" href="styles.css"></head>
 <body style=" height: min-content;background: none;">
   <app></app>
-<script src="runtime.js" defer></script><script src="polyfills.js" defer></script><script src="vendor.js" defer></script><script src="main.js" defer></script></body>
+<script src="https://cdn.poemyc.com/runtime.js" defer></script><script src="https://cdn.poemyc.com/polyfills.js" defer></script><script src="https://cdn.poemyc.com/vendor.js" defer></script><script src="https://cdn.poemyc.com/main.js" defer></script></body>
 <link rel="stylesheet" href="/css/custom.css">
 </html>

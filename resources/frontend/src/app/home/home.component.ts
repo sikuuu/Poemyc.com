@@ -89,13 +89,13 @@ export class HomeComponent {
 
   revesordref(){
     this.revesordre = !this.revesordre;
-   }
+  }
 
-   camporder(value:string){
+  camporder(value:string){
     this.order = value;
-   }
+  }
 
-   suscribe(pla_id){
+  suscribe(pla_id){
     console.log('ok');
     this.http.suscribe(pla_id).subscribe((Response) => {
       var sub = Response;

@@ -10,6 +10,8 @@ use App\Models\Article;
 use App\Models\Activitat_like;
 use App\Models\Activitat_plan;
 use App\Models\Activitat_sub;
+use App\Models\Activitat_coment;
+
 
 class APInotAuthController extends Controller
 {
@@ -28,7 +30,6 @@ class APInotAuthController extends Controller
         //dd(Auth::id());
     
         return ['users'=>User::where('username','like','%'.$text.'%')->orWhere('name','like','%'.$text.'%')->get(),'articles'=>$articles,'plans'=>$plans];
-    
     }
 
     public function llistausers() {
@@ -48,6 +49,10 @@ class APInotAuthController extends Controller
     }
 
     public function totaactivitat(){
-        return response()->json(['likes' => Activitat_like::with('user','creador','article')->orderBy('time','desc')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->orderBy('time','desc')->get(),'plan' => Activitat_plan::with('user','article','plan')->orderBy('time','desc')->get()]);
+        return response()->json(['likes' => Activitat_like::with('user','creador','article')->orderBy('time','desc')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->orderBy('time','desc')->get(),'plan' => Activitat_plan::with('user','article','plan')->orderBy('time','desc')->get(),'coments' => Activitat_coment::with('user','article','creador','comentari')->orderBy('time','desc')->get()]);
+    }
+
+    public function activitatUsuari($username){
+        //return response()->json(['likes' => Activitat_like::with('user','creador','article')->orderBy('time','desc')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->orderBy('time','desc')->get(),'plan' => Activitat_plan::with('user','article','plan')->orderBy('time','desc')->get(),'coments' => Activitat_coment::with('user','article','creador','comentari')->orderBy('time','desc')->get()]);
     }
 }

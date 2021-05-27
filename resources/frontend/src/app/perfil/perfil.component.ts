@@ -11,6 +11,7 @@ export class PerfilComponent implements OnInit {
   order  = "created_at";
   revesordre = true;
   buscadornoapi;
+  activitat;
   arts:any = {
     length: 0
   };
@@ -24,6 +25,7 @@ export class PerfilComponent implements OnInit {
     var username = parent.document.getElementById('username-img').textContent;
     this.getUserArts(http,username);
     this.getUserPlans(http,username);
+    this.getActivitatOfUsuari(http,username);
     this.http = http;
    }
 
@@ -42,6 +44,15 @@ export class PerfilComponent implements OnInit {
       this.plans = this.plans.user.plans;
 
       console.log(this.plans);
+
+    });  
+  }
+
+  getActivitatOfUsuari(http,username){
+    http.getActivitatOfUsuari(username).subscribe((Response) => {this.activitat = Response;
+      //this.activitat = this.activitat.user.activitat;
+
+      console.log(this.activitat);
 
     });  
   }

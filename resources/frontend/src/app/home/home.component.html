@@ -275,11 +275,11 @@
                           <p *ngFor="let like of activitat.likes">
                            
                               <span class="text-info" *ngIf="like.text == 'like'">
-                                El usuario <u>{{like.user.username}}</u> ha dado like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u> ({{data(like.time)}})
+                                El usuario <u>{{like.user.username}}</u> ha dado like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u>    ({{data(like.time)}})
                               </span> 
                               
                               <span class="text-danger" *ngIf="like.text == 'dislike'">
-                                El usuario <u>{{like.user.username}}</u> ha quitado su like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u> ({{data(like.time)}})
+                                El usuario <u>{{like.user.username}}</u> ha quitado su like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u>    ({{data(like.time)}})
                               </span>
                           </p>
                         </b> 
@@ -289,10 +289,10 @@
                         <b>
                           <p *ngFor="let sub of activitat.subs">
                             <span class="text-info" *ngIf="sub.text == 'suscrito'"> 
-                              El usuario <u>{{sub.user.username}}</u> se ha suscrito al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u> ({{data(sub.time)}})
+                              El usuario <u>{{sub.user.username}}</u> se ha suscrito al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u>     ({{data(sub.time)}})
                             </span> 
                             <span class="text-danger" *ngIf="sub.text == 'borrado'">
-                              El usuario <u>{{sub.user.username}}</u> ha cancelado su suscripcion al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u> ({{data(sub.time)}}) 
+                              El usuario <u>{{sub.user.username}}</u> ha cancelado su suscripcion al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u>     ({{data(sub.time)}}) 
                             </span> 
                           </p>
                         </b>
@@ -311,7 +311,17 @@
                         </b>
                       </mat-tab>
                       <mat-tab label="Comentarios">
-                          
+                        <br>
+                        <b>
+                          <p *ngFor="let coment of activitat.coments">
+                            <span class="text-info" *ngIf="coment.text == 'comentar'"> 
+                              El usuario <u>{{coment.user.username}}</u> ha comentado <em>'{{ coment.comentari.text.substring(0,20) }} <span *ngIf="coment.comentari.text.length > 20">...</span>'</em> en el artículo <u>"{{coment.article.name}}"</u> de <u>"{{coment.creador.username}}"</u>   ({{data(coment.time)}})
+                            </span> 
+                            <span class="text-danger" *ngIf="coment.text == 'borrar'">
+                              El usuario <u>{{coment.user.username}}</u> ha borrado uno de sus comentarios del artículo <u>"{{coment.article.name}}"</u> de <u>{{coment.creador.name}}</u>   ({{data(coment.time)}})
+                            </span> 
+                          </p>
+                        </b>
                       </mat-tab>
                     </mat-tab-group>
                   </div>

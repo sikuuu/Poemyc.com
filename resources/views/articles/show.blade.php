@@ -54,7 +54,11 @@
                 <div class="card bradius">
                     
                     <div class="card-body">
-                       <div class="row">
+                        <div class="row">
+                            @if (sizeof($art->comentaris) == 0)
+                                <p class="font-weigth-bold m-0 w-100 text-center" style="font-size:16px" >No hay comentarios</p>
+
+                            @endif
                             
                                 @foreach($art->comentaris as $com)
                                 <div class="font-weight-bold col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -62,7 +66,7 @@
                                         <div onclick="window.location.href = '/user/{{$com->creador->username}}'" class="userlink card-header">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <img src="{{$com->creador->avatar}}">
+                                                    <img class="rounded" src="{{$com->creador->avatar}}">
                                                 </div>
                                                 <div style="margin-top:1em" class="col text-center">
                                                     <h5><b>{{$com->creador->username}}</h5></b>
@@ -78,7 +82,7 @@
                                 </div>
                                 @endforeach
                             
-                       </div>
+                        </div>
                     </div>
                 </div>
             </div>

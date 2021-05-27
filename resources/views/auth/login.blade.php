@@ -68,9 +68,22 @@
                                 <button type="submit" class="font-weight-bold btn btn-warning">
                                     {{ __('Iniciar sesión') }}
                                 </button>
-                                <a type="button" href="/login/ldap" class="font-weight-bold btn btn-dark">
-                                Google / AD</a>
                                 <br>
+                                <br>
+                                <center>
+                                    <a href="/login/ldap">
+                                        <div class="google-btn">
+                                            <div class="google-icon-wrapper">
+                                                <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                                            </div>
+                                            <div class="google-icon-wrapper2">
+                                                <img class="google-icon" src="https://www.solarwinds.com/-/media/solarwinds/swdcv2/licensed-products/service-desk/integrations/sd-integrations-logo-active-directory.ashx?rev=c1ba84d387f447a097f7ff62b6378691&hash=08F90B52283E6A7DD1818149DA5DFABB"/>
+                                            </div>
+                                            <p class="btn-text text-wrap"><b>Entrar con Google o AD</b></p>
+                                            
+                                        </div>
+                                    </a>
+                                </center> 
                                 <br>
                             </div>
                         </div>
@@ -101,7 +114,9 @@
                     </form>
                 </div>
             </div>
+            
         </div>
     </div>
 </div>
 @endsection
+

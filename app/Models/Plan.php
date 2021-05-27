@@ -12,4 +12,13 @@ class Plan extends Model
     public function creador() {
         return $this->belongsTo(User::class,'user_id','id');
     }
+
+    public function suscrit() {
+        return $this->belongsToMany(User::class, 'users_plans','plan_id','user_id');
+    }
+
+    public function articles() {
+        return $this->belongsToMany(Article::class, 'articles_plans','plan_id','article_id');
+    }
+
 }

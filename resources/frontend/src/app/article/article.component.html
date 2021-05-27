@@ -1,1 +1,113 @@
-<p>article works!</p>
+<div class="container-fluid ">
+    <div class="row p-1">
+        <div class="p-3 col-xs-12 col-sm-12 col-md-11 middle" style="margin: auto;">
+            <div class="row">
+                <div class="col">
+                    <h3 class=""><b>Mis artículos</b></h3>
+
+                </div>
+                <div class="col text-right">
+                    <button (click)="openModal('new')" class="btn btn-primary"><fa-icon [icon]="add"></fa-icon>
+                        Nuevo artículo</button>
+                </div>
+            </div>
+            <hr>
+            <div class="container-fluid">
+                <div class="card bradius">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2"><fa-icon [icon]="search" size="2x"></fa-icon></span>
+                                </div>
+                                <input style="height: 48px;" class="form-control mr-4 me-2" type="search" [(ngModel)]="buscadornoapi" placeholder="Buscar" aria-label="Search">
+                            </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="input-group mb-3">
+                                <select #select style="height: 48px;" (change)="camporder(select.value)" class="ml-4 form-control"  aria-label="Default select example" [(ngModel)]="order">
+                                <option value="name">Nom</option>
+                                <option selected value="created_at">Antiguitat</option>
+                                <option value="likes">Likes</option>
+                                <option value="user_id">Creador</option>
+                                </select>
+                                <div class="input-group-append" >
+                                <button (click)="revesordref()" class="btn btn-info input-group-text" id="basic-addon2"><fa-icon [icon]="sort" size="2x"></fa-icon></button>
+                                </div>
+                            </div>
+                            </div>
+                    
+                        </div>
+                        <div *ngIf="articles.length == 0">
+                            <div class="col-12">
+                                <center>No hay articulos</center>
+                            </div>
+                        </div>
+                        <div *ngIf="articles.length != 0" class="row">
+                           
+                                <div *ngFor="let art of articles | filter:buscadornoapi | orderBy:order:revesordre:true; index as i" class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                    <div class="card">
+                                        <div class="card-header p-0">
+                                            <img class="w-100" src="{{art.foto}}"  onerror="this.src='/imgs/default-book.png';" alt="">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="w-100 text-center">
+                                                <h6><b>{{art.name}}</b></h6>
+                                            </div>
+                                            <div class="text-justify">
+                                                {{ art.text.substring(0,100) }}...
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row justify-content-space-between">
+                                                <div class="col col-4 p-2 text-left">
+                                                    <button (click)="openModal(art)" ngbTooltip="Editar" class="w-100 btn btn-warning">
+                                                        <fa-icon [icon]="edit"></fa-icon>
+                                                    </button>
+                                                </div>
+                                                <div class="col col-4 p-2 text-center">
+                                                    <button (click)="veurearticle(art)" ngbTooltip="Leer" class="w-100 btn btn-info">
+                                                        <fa-icon [icon]="veure"></fa-icon>  
+                                                    </button>
+                                                </div>
+                                                <div class="col col-4 p-2 text-right">
+                                                    <button (click)="deleteart(art)" ngbTooltip="Eliminar" class="w-100 btn btn-danger">
+                                                        <fa-icon [icon]="del"></fa-icon>  
+                                                    </button>
+                                                </div>
+                                                <div class="col-12 p-2 text-center">
+                                                    <button [autoClose]="outside" [ngbTooltip]="tipContent" triggers="manual" #t="ngbTooltip" (click)="getPlansOfArt(t,art)" class="w-100 btn btn-primary">
+                                                        <fa-icon [icon]="plans" ></fa-icon>
+                                                         Modificar planes
+                                                    </button>
+                                                    <ng-template #tipContent>
+                                                        <button class="btn btn-danger" (click)="t.close()"><b>X</b></button>
+                                                        <br>
+                                                        <div *ngFor="let artplan of plansofart[art.id].plansart">
+                                                            <input  type="checkbox" (click)="changeartplan(artplan.id,art.id,$event)" checked> {{artplan.name}} - {{artplan.preu}}€
+                                                        </div>
+
+                                                        <div *ngFor="let artplan of plansofart[art.id].plansnoart">
+                                                            <input type="checkbox" (click)="changeartplan(artplan.id,art.id,$event)"> {{artplan.name}} - {{artplan.preu}}€
+                                                        </div>
+                                                        
+                                                        
+                                                    </ng-template>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                                
+
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

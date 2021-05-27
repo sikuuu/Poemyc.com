@@ -1,0 +1,20 @@
+.user-img{
+    max-height: 55px;
+}
+
+.middle{
+    margin: auto;
+}
+.name-search{
+    font-size: 14.5px;
+}
+
+.maxw{
+    max-width: 85% !important;
+}
+
+.creadorlink{
+    cursor: pointer;
+
+}
+

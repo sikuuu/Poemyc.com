@@ -1,0 +1,207 @@
+<div class="container-fluid ">
+    <div class="row p-1">
+        <div class="p-3 col-xs-12 col-sm-12 col-md-11 middle" style="margin: auto;">
+            <mat-tab-group>
+                <mat-tab label="Artículos">
+                    <div class="container-fluid">
+                        <br>
+                        <div class="card bradius">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-12 col-sm-6">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon2"><i class="fas fa-2x fa-search"></i></span>
+                                        </div>
+                                        <input style="height: 46px;" class="form-control mr-4 me-2" type="search" [(ngModel)]="buscadornoapi" placeholder="Buscar" aria-label="Search">
+                                    </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="input-group mb-3">
+                                        <select #select style="height: 46px;" (change)="camporder(select.value)" class="ml-4 form-control"  aria-label="Default select example" [(ngModel)]="order">
+                                        <option value="name">Nom</option>
+                                        <option selected value="created_at">Antiguitat</option>
+                                        <option value="likes">Likes</option>
+                                        <option value="user_id">Creador</option>
+                                        </select>
+                                        <div class="input-group-append" >
+                                        <button (click)="revesordref()" class="btn btn-info input-group-text" id="basic-addon2"><i class="fas fa-2x fa-sort"></i></button>
+                                        </div>
+                                    </div>
+                                    </div>
+                            
+                                </div>
+                                <div *ngIf="arts.length == 0">
+                                    <div class="col-12">
+                                        <center>No hay articulos</center>
+                                    </div>
+                                </div>
+                               <div *ngIf="(arts.length != 0)" class="row">                                        
+                                        <div *ngFor="let art of arts | filter:buscadornoapi | orderBy:order:revesordre:true; index as i " class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                                            <div class="card">
+                                                <div class="card-header p-0">
+                                                    <img class="w-100" src="{{art.foto}}"  onerror="this.src='/imgs/default-book.png';" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="w-100 text-center">
+                                                        <h6><b>{{art.name}}</b></h6>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="text-justify">
+                                                        <div *ngFor="let plan of art.plans" class="col mt-2 col-12">
+                                                            <!--<p><b><img src="{{users.avatar}}" class="rounded user-img mr-2">{{users.username}}{{users.name}}</b></p>-->
+                                                            <div class="row">
+                                                              <div class="m-0 text-center" style="width: min-content;">
+                                                                <img src="{{plan.foto}}" onerror="this.src='/imgs/default-plan.png';" class="rounded user-img">
+                                                              </div>
+                                                              
+                                                              <div class="col text-truncate flex-nowrap" style="margin-top:0.24em;">
+                                                                <div class="row">
+                                                                  <div class="col-12 text-truncate">
+                                                                    <b>{{plan.name}}</b>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                  <div class="name-search text-truncate col-12 ">
+                                                                    {{plan.text}}
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                              <div class="col-3 pt-2 text-center justify-content-center align-items-center">
+                                                                <button (click)="suscribe(plan.id)" class="btn btn-success">
+                                                                  <i class="fas fa-plus-square"></i>
+                                                                </button>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <button (click)="veurearticle(art)" class="w-100 btn btn-info">
+                                                        <i class="fas fa-eye"></i><b> Leer</b> 
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>    
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </mat-tab>
+                <mat-tab label="Planes">
+                    <div class="container-fluid">
+                        <br>
+                        <div class="card bradius">
+                            <div class="card-body">
+                                <div *ngIf="plans.length == 0" class="row">
+                                    <div class="col-12">
+                                        <center>No hay planes</center>
+                                    </div>
+                                </div>
+                               <div *ngIf="plans.length != 0" class="row">
+                                        <div *ngFor="let pla of plans" class="col col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+                                            <div class="card">
+                                                <div class="card-header p-0">
+                                                    <img class="w-100" src="{{pla.foto}}"  onerror="this.src='/imgs/default-plan.png';" alt="">
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="w-100 text-center">
+                                                        <h6><b>{{pla.name}} - {{pla.preu}}€</b></h6>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="text-justify">
+                                                        {{pla.text}}
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer text-center">
+                                                    <button (click)="suscribe(pla.id)" class="btn btn-success">
+                                                        <i class="fas fa-plus-square"></i> Suscribirse
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                        
+                                    
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Actividad">
+                    <!--###########################################################################################################################################-->
+                    <div class="card mt-3 bradius">
+                        <div class="card-header text-center">
+                            <h5 class="m-0"><b>Actividad</b></h5>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col col-12">
+                              <mat-tab-group>
+                                <mat-tab label="Likes">
+                                  <br> 
+                                  <b>
+                                    <p *ngFor="let like of activitat.likes">
+                                     
+                                        <span class="text-info" *ngIf="like.text == 'like'">
+                                          El usuario <u>{{like.user.username}}</u> ha dado like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u>    ({{data(like.time)}})
+                                        </span> 
+                                        
+                                        <span class="text-danger" *ngIf="like.text == 'dislike'">
+                                          El usuario <u>{{like.user.username}}</u> ha quitado su like al artículo <u>"{{like.article.name}}"</u> del usuario <u>{{like.creador.username}}</u>    ({{data(like.time)}})
+                                        </span>
+                                    </p>
+                                  </b> 
+                                </mat-tab>
+                                <mat-tab label="Suscripciones">
+                                  <br>
+                                  <b>
+                                    <p *ngFor="let sub of activitat.subs">
+                                      <span class="text-info" *ngIf="sub.text == 'suscrito'"> 
+                                        El usuario <u>{{sub.user.username}}</u> se ha suscrito al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u>     ({{data(sub.time)}})
+                                      </span> 
+                                      <span class="text-danger" *ngIf="sub.text == 'borrado'">
+                                        El usuario <u>{{sub.user.username}}</u> ha cancelado su suscripcion al plan <u>"{{sub.plan.name}}" de {{sub.plan.preu}}€</u> del usuario <u>{{sub.creador_del_plan.username}}</u>     ({{data(sub.time)}}) 
+                                      </span> 
+                                    </p>
+                                  </b>
+                                </mat-tab>
+                                <mat-tab label="Articulos y Planes">
+                                  <br>
+                                  <b>
+                                    <p *ngFor="let plan of activitat.plan">
+                                      <span class="text-info" *ngIf="plan.text == 'añadido'"> 
+                                        El usuario <u>{{plan.user.username}}</u> ha añadido su artículo <u>"{{plan.article.name}}"</u> al plan <u>"{{plan.plan.name}}" de {{plan.plan.preu}}€</u>   ({{data(plan.time)}})
+                                      </span> 
+                                      <span class="text-danger" *ngIf="plan.text == 'quitado'">
+                                        El usuario <u>{{plan.user.username}}</u> ha retirado su artículo <u>"{{plan.article.name}}"</u> del plan <u>"{{plan.plan.name}}" de {{plan.plan.preu}}€</u>   ({{data(plan.time)}})
+                                      </span> 
+                                    </p>
+                                  </b>
+                                </mat-tab>
+                                <mat-tab label="Comentarios">
+                                  <br>
+                                  <b>
+                                    <p *ngFor="let coment of activitat.coments">
+                                      <span class="text-info" *ngIf="coment.text == 'comentar'"> 
+                                        El usuario <u>{{coment.user.username}}</u> ha comentado <em>'{{ coment.comentari.text.substring(0,20) }} <span *ngIf="coment.comentari.text.length > 20">...</span>'</em> en el artículo <u>"{{coment.article.name}}"</u> de <u>"{{coment.creador.username}}"</u>   ({{data(coment.time)}})
+                                      </span> 
+                                      <span class="text-danger" *ngIf="coment.text == 'borrar'">
+                                        El usuario <u>{{coment.user.username}}</u> ha borrado uno de sus comentarios del artículo <u>"{{coment.article.name}}"</u> de <u>{{coment.creador.name}}</u>   ({{data(coment.time)}})
+                                      </span> 
+                                    </p>
+                                  </b>
+                                </mat-tab>
+                              </mat-tab-group>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </mat-tab>
+              </mat-tab-group>
+        </div>
+    </div>
+</div>  

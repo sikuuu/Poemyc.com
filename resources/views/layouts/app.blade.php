@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        @notifyCss
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -15,7 +16,7 @@
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-
+        <link rel="icon" type="image/png" href="/imgs/Icon_nav.png">
 
         <!-- Links -->
 
@@ -24,11 +25,14 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <!-- Links -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/8f497d50ac.js" crossorigin="anonymous"></script>
 
 
     </head>
     <body class="auth">
+        
+
         @include('layouts.navbar')
 
         <!-- Bootstrap row -->
@@ -43,5 +47,8 @@
                 </main>
             </div>
         </div>
+        @include('notify::messages')
+        @notifyJs
+
     </body>
 </html>

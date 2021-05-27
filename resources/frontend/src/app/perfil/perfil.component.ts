@@ -83,4 +83,11 @@ export class PerfilComponent implements OnInit {
     window.top.location.href = "/user/"+art.creador.username+"/articulo/"+art.id;
   }
 
+  data(time){
+    var parte = time.split(' ');
+    var fecha = parte[0].split('-').reverse().join('-');
+    var hora = parte[1].split(':');
+    //console.log(time.split(' ')[0].split('-').reverse().join('-'));
+    return fecha +' '+ hora[0]+':'+hora[1];
+  }
 }

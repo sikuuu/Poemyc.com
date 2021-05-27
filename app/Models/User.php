@@ -68,6 +68,9 @@ class User extends Authenticatable
         return $this->hasMany(Comanda::class);
     }
 
+    
+
+
     //N to N
 
     public function suscrit() {

@@ -20,3 +20,4 @@ Route::get('/creadorshome', 'App\Http\Controllers\APInotAuthController@creadorsp
 Route::get('/userarts/{username}', 'App\Http\Controllers\APInotAuthController@userarts');
 Route::get('/userplans/{username}', 'App\Http\Controllers\APInotAuthController@userplans');
 Route::get('/totaactivitat','App\Http\Controllers\APInotAuthController@totaactivitat');
+Route::get('/activitat/{username}','App\Http\Controllers\APInotAuthController@activitatUsuari');

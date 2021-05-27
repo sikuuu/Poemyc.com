@@ -53,6 +53,7 @@ class APInotAuthController extends Controller
     }
 
     public function activitatUsuari($username){
-        //return response()->json(['likes' => Activitat_like::with('user','creador','article')->orderBy('time','desc')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->orderBy('time','desc')->get(),'plan' => Activitat_plan::with('user','article','plan')->orderBy('time','desc')->get(),'coments' => Activitat_coment::with('user','article','creador','comentari')->orderBy('time','desc')->get()]);
+        $user = User::where('username',$username)->get()[0];
+        return response()->json(['likes' => Activitat_like::with('user','creador','article')->where('user_id',$user->id)->orderBy('time','desc')->get(),'subs' => Activitat_sub::with('user','plan','creador_del_plan')->where('user_id', $user->id)->orderBy('time','desc')->get(),'plan' => Activitat_plan::with('user','article','plan')->where('user_id', $user->id)->orderBy('time','desc')->get(),'coments' => Activitat_coment::with('user','article','creador','comentari')->where('user_id',$user->id)->orderBy('time','desc')->get() ]);
     }
 }

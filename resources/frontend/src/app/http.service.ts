@@ -94,5 +94,9 @@ export class HttpService {
   getActivitat(){
     return this.httpClient.get('https://poemyc.com/api/totaactivitat');
   }
+
+  getActivitatOfUsuari(usuari){
+    return this.httpClient.get('https://poemyc.com/api/activitat/'+usuari);
+  }
   
 }

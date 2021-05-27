@@ -1866,6 +1866,9 @@ class HttpService {
     getActivitat() {
         return this.httpClient.get('https://poemyc.com/api/totaactivitat');
     }
+    getActivitatOfUsuari(usuari) {
+        return this.httpClient.get('https://poemyc.com/api/activitat/' + usuari);
+    }
 }
 HttpService.ɵfac = function HttpService_Factory(t) { return new (t || HttpService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
 HttpService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: HttpService, factory: HttpService.ɵfac, providedIn: 'root' });
@@ -2771,6 +2774,13 @@ class PerfilComponent {
     veurearticle(art) {
         console.log(art);
         window.top.location.href = "/user/" + art.creador.username + "/articulo/" + art.id;
+    }
+    data(time) {
+        var parte = time.split(' ');
+        var fecha = parte[0].split('-').reverse().join('-');
+        var hora = parte[1].split(':');
+        //console.log(time.split(' ')[0].split('-').reverse().join('-'));
+        return fecha + ' ' + hora[0] + ':' + hora[1];
     }
 }
 PerfilComponent.ɵfac = function PerfilComponent_Factory(t) { return new (t || PerfilComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](ngx_order_pipe__WEBPACK_IMPORTED_MODULE_1__["OrderPipe"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"])); };

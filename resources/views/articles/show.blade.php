@@ -114,10 +114,8 @@
   </div>
 </div>
 <script>
-    function like() {
-        
+    function like() {        
         $('.like').load('/like/'+{{$art->id}});
-
     }
 </script>
 @endsection

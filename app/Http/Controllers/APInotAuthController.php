@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Plan;
 use App\Models\Article;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Activitat_like;
 use App\Models\Activitat_plan;
@@ -41,6 +42,7 @@ class APInotAuthController extends Controller
     }
 
     public function userarts($username){
+
         return response()->json(['user' => User::with('articles','articles.plans', 'articles.creador')->where('username',$username)->get()[0]]);
     }
 

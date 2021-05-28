@@ -47,8 +47,7 @@ export class ArticleComponent implements OnInit {
   saveart(http, art){
     http.saveart(art).subscribe((Response) => {
     //console.log(Response);
-    }
-    );
+    });
   }
 
   createart(http,art){
@@ -59,8 +58,7 @@ export class ArticleComponent implements OnInit {
         //console.log('megagay');
         this.getmyArticles(http);
       }
-    }
-    );
+    });
   }
 
   deleteart(art){
@@ -73,7 +71,6 @@ export class ArticleComponent implements OnInit {
         }
       });
     }
-    
   }
 
   changeartplan(plaid,artid,event){
@@ -115,7 +112,6 @@ export class ArticleComponent implements OnInit {
       {this.plansofart[art.id] = Response;
       console.log(this.plansofart);
     t.open()});
-    
   }
 
   veurearticle(art){
